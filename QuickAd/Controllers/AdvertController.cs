@@ -133,7 +133,7 @@ namespace QuickAd.Controllers
             try
             {
                 // TODO: Add delete logic here
-                Delete(id);
+             return Delete(id);
 //                return RedirectToAction("Index");
             }
             catch
