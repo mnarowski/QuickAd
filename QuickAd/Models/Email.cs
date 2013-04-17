@@ -1,8 +1,12 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace QuickAd.Models {
 	public class Email {
 		public User SenderUser;
+        [Required,MinLength(3),MaxLength(1000)]
 		public String Content;
+        [Required,MinLength(3),MaxLength(255)]
 		public String Title;
 		public DateTime DateSend;
 		public bool IsSend;
@@ -20,6 +24,11 @@ namespace QuickAd.Models {
         public virtual DateTime VsendDate {get { return this.DateSend; } set { this.DateSend = value; }}
         public virtual bool VisSend {get { return this.IsSend; } set {this.IsSend = value;}}
         public virtual DateTime VcreatedDate {get { return this.DateCreated; } set { this.DateCreated = value; }}
+
+        public Email(User user)
+        {
+            this.IdRecipent = user.Id;
+        }
 
 		public User GetSenderUser() {
 			return this.SenderUser;

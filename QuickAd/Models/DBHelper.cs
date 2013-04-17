@@ -1,20 +1,35 @@
 using System;
 using System.Collections.Generic;
+using NHibernate;
+
 namespace QuickAd.Models
 {
 	public class DBHelper {
-		public static List<T> GetAll<T>() {
-			throw new System.Exception("Not implemented");
+		public static List<T> GetAll<T>() where T : class
+		{
+		    using (ISession session = SessionFactory.GetNewSession())
+		    {
+                return (List<T>) session.CreateCriteria<T>().List<T>();
+		    }
 		}
 		public static T FindOne<T>(int id) {
-			throw new System.Exception("Not implemented");
+            using (ISession session = SessionFactory.GetNewSession())
+            {
+                return session.Get<T>(id);
+            }
 		}
 		public static void SaveOrUpdate(Object obj) {
-			throw new System.Exception("Not implemented");
+            using (ISession session = SessionFactory.GetNewSession())
+            {
+                session.SaveOrUpdate(obj);
+            }
 		}
 		public static void Delete(Object obj) {
-			throw new System.Exception("Not implemented");
-		}
+            using (ISession session = SessionFactory.GetNewSession())
+            {
+                session.Delete(obj);
+            }
+        }
 
 	    public static string generateHash()
 	    {

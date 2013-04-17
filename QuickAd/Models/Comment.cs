@@ -1,9 +1,13 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace QuickAd.Models {
 	public class Comment {
-		public int Id;
+        public int Id;
 		public String Hash;
-		public String Title;
+		[Required,StringLength(255),MinLength(3)]
+        public String Title;
+        [Required,MinLength(10)]
 		public String Content;
 		public DateTime CreatedAt;
 	    public int IdAdvert;

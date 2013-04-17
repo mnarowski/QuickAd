@@ -1,9 +1,15 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace QuickAd.Models {
 	public class User {
+        [Required,MinLength(3)]
 		public String FirstName;
+        [Required,MinLength(3)]
 		public String LastName;
+        [Required,MaxLength(255),MinLength(5)]
 		public String Email;
+        [Required]
 		public DateTime DateOfBirth;
 		public String City;
 		public String Street;
@@ -72,12 +78,6 @@ namespace QuickAd.Models {
 		public void SetBuildingNumber(int buildingNumber) {
 			this.BuildingNumber = buildingNumber;
 		}
-		public void GetAttribute() {
-			throw new System.Exception("Not implemented");
-		}
-		public void SetAttribute(int attribute) {
-			throw new System.Exception("Not implemented");
-		}
 		public int GetHomeNumber() {
 			return this.HomeNumber;
 		}
@@ -114,11 +114,13 @@ namespace QuickAd.Models {
 		public void SetPrivillage(int privillage) {
 			this.Privillage = privillage;
 		}
-		public bool IsAdmin() {
-			throw new System.Exception("Not implemented");
+		public bool IsAdmin()
+		{
+		    return (Privillage > 1);
 		}
-		public void IsOwner(Advertise adv) {
-			throw new System.Exception("Not implemented");
+		public bool IsOwner(Advertise adv)
+		{
+		    return (bool) (adv.IdUser == this.Id);
 		}
 		public int GetId() {
 			return this.Id;
@@ -127,7 +129,7 @@ namespace QuickAd.Models {
 			this.Id = id;
 		}
 		public Email CreateEmailTo(User user) {
-			throw new System.Exception("Not implemented");
+			return new Email(user);
 		}
 
 		private Email[] emails;

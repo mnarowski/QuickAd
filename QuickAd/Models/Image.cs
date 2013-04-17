@@ -1,10 +1,13 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace QuickAd.Models {
 	public class Image {
+        [Required]
 		public String ImagePath;
 		public int Id;
 		public String Hash;
-		public String Extension;
+		public String Extension = "jpg";
 	    public bool IsPrivate;
 	    public int IdAdvert;
 
