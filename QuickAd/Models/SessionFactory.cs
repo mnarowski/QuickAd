@@ -6,7 +6,7 @@ using NHibernate.Impl;
 namespace QuickAd.Models
 {
 	public class SessionFactory {
-		private static readonly string connectionString = ConfigurationManager.ConnectionStrings["remoteHost"].ConnectionString;
+		private static string connectionString = ConfigurationManager.ConnectionStrings["remoteHost"].ConnectionString;
 		private static NHibernate.ISessionFactory sFactory;
 
 		private static void Init()
