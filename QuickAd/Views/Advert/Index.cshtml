@@ -12,11 +12,77 @@
 </p>
 <table>
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vint)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vtitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VidUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vcontent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vvalidity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vvisits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vprice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VadditionalInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VvisibleToOthers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VidAdvertCategry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VidIdTerritory)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vint)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vtitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VidUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vcontent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vvalidity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vvisits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vprice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VadditionalInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VvisibleToOthers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VidAdvertCategry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VidIdTerritory)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

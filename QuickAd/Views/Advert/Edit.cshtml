@@ -13,6 +13,94 @@
     <fieldset>
         <legend>Advertise</legend>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vint)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vint)
+            @Html.ValidationMessageFor(model => model.Vint)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vtitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vtitle)
+            @Html.ValidationMessageFor(model => model.Vtitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VidUser)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VidUser)
+            @Html.ValidationMessageFor(model => model.VidUser)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vcontent)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vcontent)
+            @Html.ValidationMessageFor(model => model.Vcontent)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vvalidity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vvalidity)
+            @Html.ValidationMessageFor(model => model.Vvalidity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vvisits)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vvisits)
+            @Html.ValidationMessageFor(model => model.Vvisits)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vprice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vprice)
+            @Html.ValidationMessageFor(model => model.Vprice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VadditionalInfo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VadditionalInfo)
+            @Html.ValidationMessageFor(model => model.VadditionalInfo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VvisibleToOthers)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VvisibleToOthers)
+            @Html.ValidationMessageFor(model => model.VvisibleToOthers)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VidAdvertCategry)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VidAdvertCategry)
+            @Html.ValidationMessageFor(model => model.VidAdvertCategry)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VidIdTerritory)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VidIdTerritory)
+            @Html.ValidationMessageFor(model => model.VidIdTerritory)
+        </div>
+
         <p>
             <input type="submit" value="Save" />
         </p>

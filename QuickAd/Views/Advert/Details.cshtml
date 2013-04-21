@@ -1,0 +1,93 @@
+﻿@model QuickAd.Models.Advertise
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Advertise</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vint)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vint)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vtitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vtitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VidUser)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VidUser)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vcontent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vcontent)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vvalidity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vvalidity)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vvisits)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vvisits)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vprice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vprice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VadditionalInfo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VadditionalInfo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VvisibleToOthers)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VvisibleToOthers)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VidAdvertCategry)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VidAdvertCategry)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VidIdTerritory)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VidIdTerritory)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
