@@ -1,32 +1,41 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace QuickAd.Models {
 	public class AdvertRate {
-		private int id;
-		private String hash;
-		private int rate;
-	    private int id_advertise;
+		public int Id;
+		public String Hash;
+        [Required]
+		public int Rate;
+	    public int IdAdvertise;
 
-        public virtual int Vid { get { return this.id; } set { this.id = value; } }
-        public virtual int Vrate { get { return this.rate; } set { this.rate = value; } }
-        public virtual int VidAdvertise { get { return this.id_advertise; } set { this.id_advertise = value; } }
+        public virtual int Vid { get { return this.Id; } set { this.Id = value; } }
+        public virtual int Vrate { get { return this.Rate; } set { this.Rate = value; } }
+        public virtual int VidAdvertise { get { return this.IdAdvertise; } set { this.IdAdvertise = value; } }
 
-		public int GetId() {
-			return this.id;
+	    public AdvertRate(Advertise advert)
+	    {
+	        advertise = advert;
+	        IdAdvertise = advertise.GetId();
+	    }
+
+	    public int GetId() {
+			return this.Id;
 		}
 		public void SetId(int id) {
-			this.id = id;
+			this.Id = id;
 		}
 		public String GetHash() {
-			return this.hash;
+			return this.Hash;
 		}
 		public void SetHash(String hash) {
-			this.hash = hash;
+			this.Hash = hash;
 		}
 		public int GetRate() {
-			return this.rate;
+			return this.Rate;
 		}
 		public void SetRate(int rate) {
-			this.rate = rate;
+			this.Rate = rate;
 		}
 
 		private Advertise advertise;

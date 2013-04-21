@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace QuickAd.Models {
 	public class Advertise {
+        [Required,MinLength(3),MaxLength(255)]
 		public String Title;
+        [Required,MinLength(10)]
 		public String Content;
 		public DateTime Validity;
 		public int Visits;
@@ -80,42 +85,47 @@ namespace QuickAd.Models {
 		public void SetId(int id) {
 			this.Id = id;
 		}
-		public AdvertCategory GetCategory() {
-			throw new System.Exception("Not implemented");
+		public AdvertCategory GetCategory()
+		{
+		    return DBHelper.FindOne<AdvertCategory>(this.IdAdvertCategory);
 		}
-		public void SetAdvertCategory(AdvertCategory advertCat) {
-			throw new System.Exception("Not implemented");
+		public void SetAdvertCategory(AdvertCategory advertCat)
+		{
+		    advertCategory = advertCat;
 		}
 		public Image[] GetGalleryImages() {
-			throw new System.Exception("Not implemented");
+			Image[] imgs = new Image[images.Count];
+		    int i = 0;
+		    foreach (Image image1 in images)
+		    {
+		        imgs[i] = image1;
+		        i++;
+		    }
+		    return imgs;
 		}
 		public void SetGalleryImages(Image[] galleryImages) {
-			throw new System.Exception("Not implemented");
+			images.AddRange(galleryImages);
 		}
 		public void AddGalleryImage(Image img) {
-			throw new System.Exception("Not implemented");
+			images.Add(img);
 		}
 		public void DeleteAllGalleryImages() {
-			throw new System.Exception("Not implemented");
+		    foreach (Image image1 in images)
+		    {
+		        DBHelper.Delete(image1);
+		    }
 		}
-		public void IncrementVisitsCount() {
-			throw new System.Exception("Not implemented");
-		}
-		public void GetAttribute() {
-			throw new System.Exception("Not implemented");
-		}
-		public void SetAttribute(int attribute) {
-			throw new System.Exception("Not implemented");
+		public void IncrementVisitsCount()
+		{
+		    this.Visits++;
 		}
 
-		private Advertise advertise2;
 		private AdvertCategory advertCategory;
 		private Territory teritory;
-		private Comment[] comments;
-		private Image[] images;
+		private List<Comment> comments;
+		private List<Image> images;
 		private Image image;
 
-		private Advertise advertise;
 
 	}
 

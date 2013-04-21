@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace QuickAd.Models {
@@ -132,8 +133,8 @@ namespace QuickAd.Models {
 			return new Email(user);
 		}
 
-		private Email[] emails;
-		private Advertise[] advertises;
+		private List<Email> emails;
+		private List<Advertise> advertises;
 
 	}
 

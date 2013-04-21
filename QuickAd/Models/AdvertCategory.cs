@@ -1,8 +1,11 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace QuickAd.Models {
 	public class AdvertCategory {
 		public int Id;
 		public String Hash;
+        [Required]
 		public String Name;
 
         public virtual int Vid { get { return this.Id; } set { this.Id = value; } }
