@@ -332,6 +332,18 @@
   <ItemGroup>
     <Content Include="Views\Advert\InFormFields.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\AdvertRate.cshtml" />
+    <Content Include="Views\Partials\Comment.cshtml" />
+    <Content Include="Views\Partials\Email.cshtml" />
+    <Content Include="Views\Partials\_LeftColumn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\UploadImage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partials\ImagesGallery.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
