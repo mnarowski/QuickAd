@@ -1,0 +1,61 @@
+﻿@model QuickAd.Models.Comment
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Comment</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vid)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vid)
+            @Html.ValidationMessageFor(model => model.Vid)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vtitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vtitle)
+            @Html.ValidationMessageFor(model => model.Vtitle)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Vcontent)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Vcontent)
+            @Html.ValidationMessageFor(model => model.Vcontent)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VcreatedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VcreatedDate)
+            @Html.ValidationMessageFor(model => model.VcreatedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VidAdvertise)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VidAdvertise)
+            @Html.ValidationMessageFor(model => model.VidAdvertise)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
