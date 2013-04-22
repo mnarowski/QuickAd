@@ -19,7 +19,7 @@ namespace QuickAd.Models {
 	    public int IdAdvertCategory;
 	    public int IdTerritory;
 
-        public virtual int Vint {get { return this.Id; } set { this.Id = value; }}
+        public virtual int Vid {get { return this.Id; } set { this.Id = value; }}
         public virtual string Vtitle {get { return this.Title; } set { this.Title = value; }}
         public virtual int VidUser {get { return this.IdUser; } set { this.IdUser = value; }}
         public virtual string Vcontent {get { return this.Content; } set { this.Content = value; }}
