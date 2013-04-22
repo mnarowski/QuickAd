@@ -6,8 +6,10 @@ using System.Reflection;
 
 namespace QuickAd.Models
 {
-	public class SessionFactory {
-        private static string connectionString = "Server name: 148.81.130.59; Login: l_proj2013_1; Password: p_proj2013_1";
+	public class SessionFactory
+	{
+	    private static string connectionString =
+	        "Server=148.81.130.59;Database=db_proj2013_1;User Id=l_proj2013_1;Password=p_proj2013_1;";
 		private static NHibernate.ISessionFactory sFactory;
 
 		private static void Init()
