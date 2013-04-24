@@ -28,8 +28,8 @@ namespace QuickAd.Models {
 
 		        foreach (Email email in emails)
 		        {
-		            MailMessage mmsg = new MailMessage(DBHelper.FindOne<User>(email.IdSender).Email,DBHelper.FindOne<User>(email.IdRecipent).Email,email.Title,email.Content);
-		            email.DateSend = DateTime.Now;
+                    MailMessage mmsg = new MailMessage(DBHelper.FindOne<User>(email.VidSenderUser).Vemail, DBHelper.FindOne<User>(email.VidRecipent).Vemail, email.Vtitle, email.Vcontent);
+		            email.VsendDate = DateTime.Now;
                     DBHelper.SaveOrUpdate(email);
 		            smtp.Send(mmsg);
 		        }

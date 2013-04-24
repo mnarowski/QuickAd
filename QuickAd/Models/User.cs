@@ -4,132 +4,131 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QuickAd.Models {
 	public class User {
-        [Required,MinLength(3)]
-		public String FirstName;
-        [Required,MinLength(3)]
-		public String LastName;
-        [Required,MaxLength(255),MinLength(5)]
-		public String Email;
-        [Required]
-		public DateTime DateOfBirth;
-		public String City;
-		public String Street;
-		public int BuildingNumber;
-		public int HomeNumber;
-		public Sex Sex;
-		public String Password;
-		public String PhoneNumber;
-		public String Hash;
-		public int Privillage;
-		public int Id;
-	    public int IdSex;
+        private String FirstName;
+        private String LastName;
+        private String Email;
+        private DateTime DateOfBirth;
+		private String City;
+		private String Street;
+		private int BuildingNumber;
+		private int HomeNumber;
+		private Sex Sex;
+		private String Password;
+		private String PhoneNumber;
+		private String Hash;
+		private int Privillage;
+		private int Id;
+	    private int IdSex;
 
+        public virtual int Vid { get { return this.Id; } set { this.Id = value; } }
         public virtual string VfirstName {get { return this.FirstName; } set { this.FirstName = value; }}
         public virtual string VlastName {get { return this.LastName; } set { this.LastName = value; }}
         public virtual string Vemail {get { return this.Email; } set { this.Email = value; }}
-        public virtual DateTime VdateOfBirth {get { return this.DateOfBirth; } set { this.DateOfBirth = value; }}
-        public virtual string Vcity {get { return this.City; } set { this.City = value; }}
-        public virtual string Vstreet {get { return this.Street; } set { this.Street = value; }}
-        public virtual int VbuildingNumber {get { return this.BuildingNumber; } set { this.BuildingNumber = value; }}
-        public virtual int VhomeNumber {get { return this.HomeNumber; } set { this.HomeNumber = value; }}
-        public virtual int VidSex {get { return this.IdSex; } set { this.IdSex = value; }}
-        public virtual string Vpassword {get { return this.Password; } set { this.Password = value; }}
-        public virtual string VphoneNumber {get { return this.PhoneNumber; } set { this.PhoneNumber = value; }}
-        public virtual int Vprivillage { get { return this.Privillage; } set { this.Privillage = value; } } 
+        public virtual DateTime VdateOfBirth { get { return this.DateOfBirth; } set { this.DateOfBirth = value; } }
+        public virtual string Vcity { get { return this.City; } set { this.City = value; } }
+        public virtual string Vstreet { get { return this.Street; } set { this.Street = value; } }
+        public virtual int VbuildingNumber { get { return this.BuildingNumber; } set { this.BuildingNumber = value; } }
+        public virtual int VhomeNumber { get { return this.HomeNumber; } set { this.HomeNumber = value; } }
+        public virtual int VidSex { get { return this.IdSex; } set { this.IdSex = value; } }
+        public virtual string Vpassword { get { return this.Password; } set { this.Password = value; } }
+        public virtual string VphoneNumber { get { return this.PhoneNumber; } set { this.PhoneNumber = value; } }
+        public virtual int Vprivillage { get { return this.Privillage; } set { this.Privillage = value; } }
 
-		public String GetFirstName() {
+        public User() { }
+
+		public virtual String GetFirstName() {
 			return this.FirstName;
 		}
-		public void SetFirstName(String firstName) {
+		public virtual void SetFirstName(String firstName) {
 			this.FirstName = firstName;
 		}
-		public String GetLastName() {
+		public virtual String GetLastName() {
 			return this.LastName;
 		}
-		public void SetLastName(String lastName) {
+		public virtual void SetLastName(String lastName) {
 			this.LastName = lastName;
 		}
-		public String GetEmail() {
+		public virtual String GetEmail() {
 			return this.Email;
 		}
-		public void SetEmail(String email) {
+		public virtual void SetEmail(String email) {
 			this.Email = email;
 		}
-		public DateTime GetDateOfBirth() {
+		public virtual DateTime GetDateOfBirth() {
 			return this.DateOfBirth;
 		}
-		public void SetDateOfBirth(DateTime dateOfBirth) {
+		public virtual void SetDateOfBirth(DateTime dateOfBirth) {
 			this.DateOfBirth = dateOfBirth;
 		}
-		public String GetCity() {
+		public virtual String GetCity() {
 			return this.City;
 		}
-		public void SetCity(String city) {
+		public virtual void SetCity(String city) {
 			this.City = city;
 		}
-		public String GetStreet() {
+		public virtual String GetStreet() {
 			return this.Street;
 		}
-		public void SetStreet(String street) {
+		public virtual void SetStreet(String street) {
 			this.Street = street;
 		}
-		public int GetBuildingNumber() {
+		public virtual int GetBuildingNumber() {
 			return this.BuildingNumber;
 		}
-		public void SetBuildingNumber(int buildingNumber) {
+		public virtual void SetBuildingNumber(int buildingNumber) {
 			this.BuildingNumber = buildingNumber;
 		}
-		public int GetHomeNumber() {
+		public virtual int GetHomeNumber() {
 			return this.HomeNumber;
 		}
-		public void SetHomeNumber(int homeNumber) {
+		public virtual void SetHomeNumber(int homeNumber) {
 			this.HomeNumber = homeNumber;
 		}
-		public Sex GetSex() {
+		public virtual Sex GetSex() {
 			return this.Sex;
 		}
-		public void SetSex(Sex sex) {
+		public virtual void SetSex(Sex sex) {
 			this.Sex = sex;
 		}
-		public String GetPassword() {
+		public virtual String GetPassword() {
 			return this.Password;
 		}
-		public void SetPassword(String password) {
+		public virtual void SetPassword(String password) {
 			this.Password = password;
 		}
-		public String GetPhoneNumber() {
+		public virtual String GetPhoneNumber() {
 			return this.PhoneNumber;
 		}
-		public void SetPhoneNumber(String phoneNumber) {
+		public virtual void SetPhoneNumber(String phoneNumber) {
 			this.PhoneNumber = phoneNumber;
 		}
-		public String GetHash() {
+		public virtual String GetHash() {
 			return this.Hash;
 		}
-		public void SetHash(String hash) {
+		public virtual void SetHash(String hash) {
 			this.Hash = hash;
 		}
-		public int GetPrivillage() {
+		public virtual int GetPrivillage() {
 			return this.Privillage;
 		}
-		public void SetPrivillage(int privillage) {
+		public virtual void SetPrivillage(int privillage) {
 			this.Privillage = privillage;
 		}
-		public bool IsAdmin()
+		public virtual bool IsAdmin()
 		{
 		    return (Privillage > 1);
 		}
-		public bool IsOwner(Advertise adv)
+		public virtual bool IsOwner(Advertise adv)
 		{
-		    return (bool) (adv.IdUser == this.Id);
+		    return (bool) (adv.VidUser == this.Id);
 		}
-		public int GetId() {
+		public virtual int GetId() {
 			return this.Id;
 		}
-		public void SetId(int id) {
+		public virtual void SetId(int id) {
 			this.Id = id;
 		}
-		public Email CreateEmailTo(User user) {
+		public virtual Email CreateEmailTo(User user) {
 			return new Email(user);
 		}
 
