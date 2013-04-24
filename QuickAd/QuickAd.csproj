@@ -251,6 +251,7 @@
     <Content Include="Global.asax" />
     <EmbeddedResource Include="Models\DBO\models.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Scripts\default.js" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
