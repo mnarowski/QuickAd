@@ -12,41 +12,27 @@ namespace QuickAd.Controllers
         //
         // GET: /Advert/
 
-        public ActionResult Index()
-        {
-            List<Advertise> adverts = DBHelper.GetAll<Advertise>();
-            ViewBag.List = adverts;
-            return View();
-        }
 
         public ActionResult Index(FormCollection collection)
         {
-             
-            return View();
+            List<Advertise> adverts = DBHelper.GetAll<Advertise>();
+            ViewData.Model = adverts;
+            return View();     
         }
-
-        //
-        // GET: /Advert/Details/5
 
         public ActionResult Details(int id)
         {
             Advertise model = DBHelper.FindOne<Advertise>(id);
-            ViewBag.Model = model;
+            ViewData.Model = model;
             return View();
         }
-
-        //
-        // GET: /Advert/Create
 
         public ActionResult Create()
         {
             Advertise model = new Advertise();
-            ViewBag.Model = model;
+            ViewData.Model = model;
             return View();
         }
-
-        //
-        // POST: /Advert/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -76,13 +62,10 @@ namespace QuickAd.Controllers
             }
         }
 
-        //
-        // GET: /Advert/Edit/5
-
         public ActionResult Edit(int id)
         {
             Advertise model = DBHelper.FindOne<Advertise>(id);
-            ViewBag.Model = model;
+            ViewData.Model = model;
             return View();
         }
 
@@ -94,8 +77,6 @@ namespace QuickAd.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-//                Advertise model = DBHelper.FindOne<Advertise>(id);
                 Advertise advertise = DBHelper.FindOne<Advertise>(id);
 
                 advertise.SetAddinationalInfo(collection["addinationInfo"] as string);
@@ -132,9 +113,7 @@ namespace QuickAd.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
              return Delete(id);
-//                return RedirectToAction("Index");
             }
             catch
             {

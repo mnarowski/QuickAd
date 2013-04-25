@@ -19,19 +19,31 @@ namespace QuickAd.Models {
 		private int Privillage;
 		private int Id;
 	    private int IdSex;
-
+        [Display(Name = "id")]
         public virtual int Vid { get { return this.Id; } set { this.Id = value; } }
+        [Display(Name = "Imiê")]
         public virtual string VfirstName {get { return this.FirstName; } set { this.FirstName = value; }}
+        [Display(Name = "Nazwisko")]
         public virtual string VlastName {get { return this.LastName; } set { this.LastName = value; }}
+        [Display(Name = "E-mail")]
         public virtual string Vemail {get { return this.Email; } set { this.Email = value; }}
+        [Display(Name = "Data urodzenia")]
         public virtual DateTime VdateOfBirth { get { return this.DateOfBirth; } set { this.DateOfBirth = value; } }
+        [Display(Name = "Miasto")]
         public virtual string Vcity { get { return this.City; } set { this.City = value; } }
+        [Display(Name = "Ulica")]
         public virtual string Vstreet { get { return this.Street; } set { this.Street = value; } }
+        [Display(Name = "Nr bundyku")]
         public virtual int VbuildingNumber { get { return this.BuildingNumber; } set { this.BuildingNumber = value; } }
+        [Display(Name = "Nr lokalu")]
         public virtual int VhomeNumber { get { return this.HomeNumber; } set { this.HomeNumber = value; } }
+        [Display(Name = "P³eæ")]
         public virtual int VidSex { get { return this.IdSex; } set { this.IdSex = value; } }
+        [Display(Name = "Has³o")]
         public virtual string Vpassword { get { return this.Password; } set { this.Password = value; } }
+        [Display(Name = "Numer telefonu")]
         public virtual string VphoneNumber { get { return this.PhoneNumber; } set { this.PhoneNumber = value; } }
+        [Display(Name = "Uprawnienia")]
         public virtual int Vprivillage { get { return this.Privillage; } set { this.Privillage = value; } }
 
         public User() { }

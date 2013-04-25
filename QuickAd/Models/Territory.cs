@@ -10,7 +10,7 @@ namespace QuickAd.Models {
         public Territory() { }
 
         public virtual int Vid { get { return this.Id; } set { this.Id = value; } }
-        [Required, MaxLength(255), MinLength(3)]
+        [Required, MaxLength(255), MinLength(3),Display(Name="Nazwa regionu")]
         public virtual string Vname { get { return this.Name; } set { this.Name = value; } }
 
 		public virtual int GetId() {

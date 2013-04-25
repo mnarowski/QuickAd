@@ -17,18 +17,26 @@ namespace QuickAd.Models {
 	    private int IdAdvertCategory;
 	    private int IdTerritory;
 
+        [Display(Name="id")]
         public virtual int Vid {get { return this.Id; } set { this.Id = value; }}
-        [Required, MinLength(3), MaxLength(255)]
+        [Display(Name = "Tytu³"), Required, MinLength(3), MaxLength(255)]
         public virtual string Vtitle {get { return this.Title; } set { this.Title = value; }}
+        [Display(Name="Autor")]
         public virtual int VidUser {get { return this.IdUser; } set { this.IdUser = value; }}
-        [Required, MinLength(10)]
+        [Display(Name = "Treœæ"), Required, MinLength(10)]
         public virtual string Vcontent {get { return this.Content; } set { this.Content = value; }}
+        [Display(Name = "Data wa¿noœci")]
         public virtual DateTime Vvalidity {get { return this.Validity; } set { this.Validity = value; }}
+        [Display(Name = "Iloœæ wizyt")]
         public virtual int Vvisits {get { return this.Visits; } set { this.Visits = value; }}
+        [Display(Name = "Cena")]
         public virtual double Vprice {get { return this.Price; } set { this.Price = value; }}
+        [Display(Name = "Informacje dodatkowe")]
         public virtual string VadditionalInfo {get { return this.AddinationalInfo; } set { this.AddinationalInfo = value; }}
         public virtual bool VvisibleToOthers {get { return this.VisibleToOthers; } set { this.VisibleToOthers = value; }}
+        [Display(Name = "Kategoria")]
         public virtual int VidAdvertCategory { get { return this.IdAdvertCategory; } set { this.IdAdvertCategory = value; } }
+        [Display(Name = "Region")]
         public virtual int VidTerritory {get { return this.IdTerritory; } set { this.IdTerritory = value; }}
 
         public Advertise() { }

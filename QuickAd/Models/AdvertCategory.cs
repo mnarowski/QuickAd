@@ -10,7 +10,7 @@ namespace QuickAd.Models {
         public AdvertCategory() { }
 
         public virtual int Vid { get { return this.Id; } set { this.Id = value; } }
-        [Required]
+        [Required,Display(Name="Nazwa")]
         public virtual string Vname { get { return this.Name; } set { this.Name = value; } }
 
 		public virtual int GetId() {

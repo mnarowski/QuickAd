@@ -12,7 +12,7 @@ namespace QuickAd.Models {
 	    private int IdAdvert;
 
         public virtual int Vid {get { return this.Id; } set { this.Id = value; }}
-        [Required]
+        [Required,Display(Name="Plik")]
         public virtual string Vpath {get { return this.ImagePath; } set { this.ImagePath = value; }}
         public virtual string Vextension {get { return this.Extension; } set { this.Extension = value; }}
         public virtual bool VisPrivate {get { return this.IsPrivate; } set { this.IsPrivate = value; }}

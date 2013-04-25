@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace QuickAd.Models
 {
@@ -12,6 +13,7 @@ namespace QuickAd.Models
         private String Name;
 
         public virtual int Vid { get { return this.Id; } set { this.Id = value; } }
+        [Display(Name="Płeć")]
         public virtual string Vname { get { return this.Name; } set { this.Name = value; } }
 
         public Sex() { }

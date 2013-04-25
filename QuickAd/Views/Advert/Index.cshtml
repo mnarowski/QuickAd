@@ -1,25 +1,19 @@
 ﻿@model IEnumerable<QuickAd.Models.Advertise>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista ogłoszeń";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj nowe ogłoszenie", "Create")
 </p>
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Vid)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Vtitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VidUser)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Vcontent)
@@ -33,31 +27,13 @@
         <th>
             @Html.DisplayNameFor(model => model.Vprice)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VadditionalInfo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VvisibleToOthers)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VidAdvertCategry)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VidIdTerritory)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Vint)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Vtitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VidUser)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Vcontent)
@@ -72,21 +48,8 @@
             @Html.DisplayFor(modelItem => item.Vprice)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.VadditionalInfo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VvisibleToOthers)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VidAdvertCategry)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VidIdTerritory)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.Vid }) |
+            @Html.ActionLink("Zobacz", "Details", new { id=item.Vid }) 
         </td>
     </tr>
 }

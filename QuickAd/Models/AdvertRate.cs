@@ -9,7 +9,7 @@ namespace QuickAd.Models {
 	    private int IdAdvertise;
 
         public virtual int Vid { get { return this.Id; } set { this.Id = value; } }
-        [Required]
+        [Required,Display(Name="Ocena")]
         public virtual int Vrate { get { return this.Rate; } set { this.Rate = value; } }
         public virtual int VidAdvertise { get { return this.IdAdvertise; } set { this.IdAdvertise = value; } }
 

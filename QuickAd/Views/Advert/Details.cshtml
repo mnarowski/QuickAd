@@ -1,7 +1,7 @@
 ﻿@model QuickAd.Models.Advertise
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,15 +9,7 @@
 
 <fieldset>
     <legend>Advertise</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Vid)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Vid)
-    </div>
-
-    <div class="display-label">
+ <div class="display-label">
          @Html.DisplayNameFor(model => model.Vtitle)
     </div>
     <div class="display-field">
@@ -74,20 +66,19 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.VidAdvertCategry)
+         @Html.DisplayNameFor(model => model.VidAdvertCategory)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.VidAdvertCategry)
+        @Html.DisplayFor(model => model.VidAdvertCategory)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.VidIdTerritory)
+         @Html.DisplayNameFor(model => model.VidTerritory)
     </div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.VidIdTerritory)
+        @Html.DisplayFor(model => model.VidTerritory)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

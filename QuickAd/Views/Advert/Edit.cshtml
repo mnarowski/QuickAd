@@ -1,7 +1,7 @@
 ﻿@model QuickAd.Models.Advertise
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edycja ogłoszenia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,15 +11,8 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Advertise</legend>
+        <legend>Ogłoszenie</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Vid)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Vid)
-            @Html.ValidationMessageFor(model => model.Vid)
-        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Vtitle)
@@ -86,30 +79,27 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.VidAdvertCategry)
+            @Html.LabelFor(model => model.VidAdvertCategory)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VidAdvertCategry)
-            @Html.ValidationMessageFor(model => model.VidAdvertCategry)
+            @Html.EditorFor(model => model.VidAdvertCategory)
+            @Html.ValidationMessageFor(model => model.VidAdvertCategory)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.VidIdTerritory)
+            @Html.LabelFor(model => model.VidTerritory)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VidIdTerritory)
-            @Html.ValidationMessageFor(model => model.VidIdTerritory)
+            @Html.EditorFor(model => model.VidTerritory)
+            @Html.ValidationMessageFor(model => model.VidTerritory)
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Zapisz" />
         </p>
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

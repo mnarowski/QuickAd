@@ -1,7 +1,7 @@
 ﻿@model QuickAd.Models.Advertise
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Dodaj nowe ogłoszenie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,15 +11,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Advertise</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Vid)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Vid)
-            @Html.ValidationMessageFor(model => model.Vid)
-        </div>
+        <legend>Ogłoszenie</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Vtitle)
@@ -27,14 +19,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Vtitle)
             @Html.ValidationMessageFor(model => model.Vtitle)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VidUser)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VidUser)
-            @Html.ValidationMessageFor(model => model.VidUser)
         </div>
 
         <div class="editor-label">
@@ -76,24 +60,14 @@
             @Html.EditorFor(model => model.VadditionalInfo)
             @Html.ValidationMessageFor(model => model.VadditionalInfo)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VvisibleToOthers)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VvisibleToOthers)
-            @Html.ValidationMessageFor(model => model.VvisibleToOthers)
-        </div>
-
-        
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Dodaj!" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <!--@Html.ActionLink("Powrót do listy", "Index")-->
 </div>
 
 @section Scripts {
