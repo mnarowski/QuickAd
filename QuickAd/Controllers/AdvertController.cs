@@ -66,6 +66,7 @@ namespace QuickAd.Controllers
         {
             Advertise model = DBHelper.FindOne<Advertise>(id);
             ViewData.Model = model;
+            ViewData["copyModel"] = model;
             return View();
         }
 

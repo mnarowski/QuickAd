@@ -1,4 +1,8 @@
-﻿@model QuickAd.Models.Advertise
+﻿@using QuickAd.Models
+@using QuickAd.ViewHelpers
+@using QuickAd.Models.DBO
+@model QuickAd.Models.Advertise
+
 
 @{
     ViewBag.Title = "Edycja ogłoszenia";
@@ -82,7 +86,8 @@
             @Html.LabelFor(model => model.VidAdvertCategory)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VidAdvertCategory)
+            
+            @Html.BuildSelectCategories(((Advertise)ViewData["copyModel"]).VidAdvertCategory,"category","")
             @Html.ValidationMessageFor(model => model.VidAdvertCategory)
         </div>
 
@@ -90,7 +95,7 @@
             @Html.LabelFor(model => model.VidTerritory)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VidTerritory)
+            @Html.BuildSelectRegion(((Advertise)ViewData["copyModel"]).VidTerritory, "category", "")
             @Html.ValidationMessageFor(model => model.VidTerritory)
         </div>
 

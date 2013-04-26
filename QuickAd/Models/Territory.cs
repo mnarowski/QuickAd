@@ -1,8 +1,9 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using QuickAd.Models.DBO;
 
 namespace QuickAd.Models {
-	public class Territory {
+	public class Territory : IEntity {
 		private int Id;
 		private String Hash;
         private String Name;
