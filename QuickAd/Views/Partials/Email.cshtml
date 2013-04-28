@@ -4,34 +4,17 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Add","Email")) {
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Email</legend>
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.Vid)
+            @Html.LabelFor(model => model.Vtitle)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Vid)
-            @Html.ValidationMessageFor(model => model.Vid)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VidSenderUser)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VidSenderUser)
-            @Html.ValidationMessageFor(model => model.VidSenderUser)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VidRecipent)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VidRecipent)
-            @Html.ValidationMessageFor(model => model.VidRecipent)
+            @Html.EditorFor(model => model.Vtitle)
+            @Html.ValidationMessageFor(model => model.Vtitle)
         </div>
 
         <div class="editor-label">
@@ -43,30 +26,6 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Vtitle)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Vtitle)
-            @Html.ValidationMessageFor(model => model.Vtitle)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VsendDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VsendDate)
-            @Html.ValidationMessageFor(model => model.VsendDate)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VisSend)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VisSend)
-            @Html.ValidationMessageFor(model => model.VisSend)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.VcreatedDate)
         </div>
         <div class="editor-field">
@@ -75,11 +34,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Wyślij" />
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
