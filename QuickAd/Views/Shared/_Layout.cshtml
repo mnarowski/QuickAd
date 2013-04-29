@@ -13,14 +13,17 @@
             <div class="content-wrapper">
                 <div class="float-left">
                     <p class="site-title">@Html.ActionLink("QuickAd", "Index", "Home")</p>
+                    <blockquote class="move_to_left">Sprzedaj/zamień co chcesz!</blockquote>
                 </div>
                 <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
+                    
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Główna", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Konto", "Index", "Home")</li>
+                            <li>@Html.RouteLink("Zaloguj się", "Zaloguj", new { redirect_ok=Url.RequestContext.HttpContext.Request.Path })</li>
+                            <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Dodaj nowe!", "Create", "Advert")</li>
                         </ul>
                     </nav>
                 </div>

@@ -1,15 +1,15 @@
-﻿@model QuickAd.Models.Comment
+﻿@model QuickAd.Models.Email
 
 <script src="~/Scripts/jquery-1.7.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-@using (Html.BeginForm()) {
+<h2>Odpisz do ogłaszającego:</h2>
+@using (Html.BeginForm("Add","Email")) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Komentarz</legend>
-
+        <legend>Email</legend>
         <div class="editor-label">
             @Html.LabelFor(model => model.Vtitle)
         </div>

@@ -1,0 +1,19 @@
+﻿@using QuickAd.Models
+@model IEnumerable<QuickAd.Models.Image>
+
+<table>
+   
+@foreach (Image item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vpath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vextension)
+        </td>
+        <td>
+        </td>
+    </tr>
+}
+
+</table>

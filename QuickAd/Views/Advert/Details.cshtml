@@ -1,14 +1,15 @@
-﻿@model QuickAd.Models.Advertise
+﻿@using QuickAd.Models
+@model QuickAd.Models.Advertise
 
 @{
     ViewBag.Title = "Szczegóły";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Szczegóły:</h2>
 
 <fieldset>
-    <legend>Advertise</legend>
+    <legend>Ogłoszenie:</legend>
  <div class="display-label">
          @Html.DisplayNameFor(model => model.Vtitle)
     </div>
@@ -31,13 +32,6 @@
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.Vvalidity)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Vvalidity)
-    </div>
-
-    <div class="display-label">
          @Html.DisplayNameFor(model => model.Vvisits)
     </div>
     <div class="display-field">
@@ -57,28 +51,12 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.VadditionalInfo)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.VvisibleToOthers)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.VvisibleToOthers)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.VidAdvertCategory)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.VidAdvertCategory)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.VidTerritory)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.VidTerritory)
-    </div>
 </fieldset>
+
+@Html.Partial("ImagesGallery",(object) SessionFactory.GetNewSession().CreateQuery("from Image i Where VidAdvertise = :id_advertise").SetParameter("id_advertise", ViewBag.id).List<Image>())
+@Html.Partial("Email", new Email(DBHelper.FindOne<User>(((Advertise)ViewData["copyModel"]).GetIdUser() )))
+@Html.Partial("AdvertRate", new AdvertRate(Model))
+@Html.Partial("Comment", new Comment(Model))
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>

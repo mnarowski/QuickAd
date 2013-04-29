@@ -14,7 +14,7 @@
             @Html.LabelFor(model => model.Vrate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Vrate)
+            @Html.TextBoxFor(model => model.Vrate, new { type="range",max="5",min="1"})
             @Html.ValidationMessageFor(model => model.Vrate)
         </div>
 

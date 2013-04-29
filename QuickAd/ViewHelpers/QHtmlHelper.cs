@@ -57,5 +57,6 @@ namespace QuickAd.ViewHelpers
 
             return res;
         }
+
     }
 }

@@ -18,6 +18,13 @@ namespace QuickAd.Models {
         public virtual DateTime VcreatedDate {get { return this.CreatedAt; } set { this.CreatedAt = value; }}
         public virtual int VidAdvertise {get { return this.IdAdvert; } set { this.IdAdvert = value; }}
 
+        public Comment() { }
+
+        public Comment(Advertise adv) {
+            CreatedAt = DateTime.Now;
+            IdAdvert = adv.GetId();
+        }
+
 		public virtual int GetId() {
 			return this.Id;
 		}

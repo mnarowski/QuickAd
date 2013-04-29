@@ -98,7 +98,7 @@
             @Html.BuildSelectRegion(((Advertise)ViewData["copyModel"]).VidTerritory, "category", "")
             @Html.ValidationMessageFor(model => model.VidTerritory)
         </div>
-
+        @Html.RenderPartial("Partials/ImagesGallery.cshtml");
         <p>
             <input type="submit" value="Zapisz" />
         </p>

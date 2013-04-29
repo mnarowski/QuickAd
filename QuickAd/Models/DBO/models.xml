@@ -89,7 +89,7 @@
   </class>
 
   <!--Class User-->
-  <class name="User" table="User" schema="dbo" lazy="true">
+  <class name="User" table="Users" schema="dbo" lazy="true">
     <id name="Vid" column="id_user">
       <generator class="identity"/>
     </id>

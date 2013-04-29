@@ -7,10 +7,7 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Dodaj nowe ogłoszenie", "Create")
-</p>
-<table>
+<table class="advertsTable">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Vtitle)
@@ -30,7 +27,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (QuickAd.Models.Advertise item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Vtitle)

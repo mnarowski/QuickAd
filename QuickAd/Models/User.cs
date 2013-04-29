@@ -25,7 +25,7 @@ namespace QuickAd.Models {
         public virtual string VfirstName {get { return this.FirstName; } set { this.FirstName = value; }}
         [Display(Name = "Nazwisko")]
         public virtual string VlastName {get { return this.LastName; } set { this.LastName = value; }}
-        [Display(Name = "E-mail")]
+        [Display(Name = "E-mail"),Required,MinLength(4),MaxLength(32)]
         public virtual string Vemail {get { return this.Email; } set { this.Email = value; }}
         [Display(Name = "Data urodzenia")]
         public virtual DateTime VdateOfBirth { get { return this.DateOfBirth; } set { this.DateOfBirth = value; } }
@@ -39,7 +39,7 @@ namespace QuickAd.Models {
         public virtual int VhomeNumber { get { return this.HomeNumber; } set { this.HomeNumber = value; } }
         [Display(Name = "P³eæ")]
         public virtual int VidSex { get { return this.IdSex; } set { this.IdSex = value; } }
-        [Display(Name = "Has³o")]
+        [Display(Name = "Has³o"),MinLength(5),MaxLength(20),Required]
         public virtual string Vpassword { get { return this.Password; } set { this.Password = value; } }
         [Display(Name = "Numer telefonu")]
         public virtual string VphoneNumber { get { return this.PhoneNumber; } set { this.PhoneNumber = value; } }

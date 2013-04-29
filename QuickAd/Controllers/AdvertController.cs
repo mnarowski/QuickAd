@@ -15,7 +15,15 @@ namespace QuickAd.Controllers
 
         public ActionResult Index(FormCollection collection)
         {
-            List<Advertise> adverts = DBHelper.GetAll<Advertise>();
+            int id_territory = Int32.Parse(collection["territory"]);
+            int id_category = Int32.Parse(collection["category"]);
+
+            NHibernate.IQuery query = SessionFactory.GetNewSession().CreateQuery("from Advertise a WHERE a.VidAdvertCategory=:id_category AND a.VidTerritory=:id_territory").
+                SetParameter<int>("id_category", id_category).
+                SetParameter<int>("id_territory", id_territory);
+            
+            List<Advertise> adverts = (List<Advertise>)query.List<Advertise>();
+            
             ViewData.Model = adverts;
             return View();     
         }
@@ -24,6 +32,10 @@ namespace QuickAd.Controllers
         {
             Advertise model = DBHelper.FindOne<Advertise>(id);
             ViewData.Model = model;
+            ViewBag.id = model.GetId();
+            ViewData["copyModel"] = model;
+            model.IncrementVisitsCount();
+            DBHelper.SaveOrUpdate(model);
             return View();
         }
 
@@ -66,7 +78,12 @@ namespace QuickAd.Controllers
         {
             Advertise model = DBHelper.FindOne<Advertise>(id);
             ViewData.Model = model;
+            
+            if (Session["User"]!=null || (!((User)Session["User"]).IsOwner(model) && !((User)Session["User"]).IsAdmin())) {
+                return RedirectToAction("Index", "Home");
+            }
             ViewData["copyModel"] = model;
+            
             return View();
         }
 

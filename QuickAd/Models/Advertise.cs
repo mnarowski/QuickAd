@@ -130,6 +130,14 @@ namespace QuickAd.Models {
 		    this.Visits++;
 		}
 
+        public virtual int GetIdUser() {
+            return IdUser;
+        }
+
+        public virtual void setIdUser(int _idUser) {
+            this.IdUser = _idUser;
+        }
+
 		private AdvertCategory advertCategory;
 		private Territory teritory;
 		private List<Comment> comments;
