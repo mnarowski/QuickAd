@@ -9,9 +9,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Edit", "Advert", new { id = ((Advertise)ViewData["copyModel"]).Vid }, FormMethod.Post, new { enctype="multipart/form-data"}))
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -24,14 +25,6 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Vtitle)
             @Html.ValidationMessageFor(model => model.Vtitle)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VidUser)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VidUser)
-            @Html.ValidationMessageFor(model => model.VidUser)
         </div>
 
         <div class="editor-label">
@@ -51,14 +44,6 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Vvisits)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Vvisits)
-            @Html.ValidationMessageFor(model => model.Vvisits)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.Vprice)
         </div>
         <div class="editor-field">
@@ -75,19 +60,11 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.VvisibleToOthers)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VvisibleToOthers)
-            @Html.ValidationMessageFor(model => model.VvisibleToOthers)
-        </div>
-
-        <div class="editor-label">
             @Html.LabelFor(model => model.VidAdvertCategory)
         </div>
         <div class="editor-field">
             
-            @Html.BuildSelectCategories(((Advertise)ViewData["copyModel"]).VidAdvertCategory,"category","")
+            @Html.BuildSelectCategories(((Advertise)ViewData["copyModel"]).VidAdvertCategory, "category", "")
             @Html.ValidationMessageFor(model => model.VidAdvertCategory)
         </div>
 
@@ -95,17 +72,23 @@
             @Html.LabelFor(model => model.VidTerritory)
         </div>
         <div class="editor-field">
-            @Html.BuildSelectRegion(((Advertise)ViewData["copyModel"]).VidTerritory, "category", "")
+            @Html.BuildSelectRegion(((Advertise)ViewData["copyModel"]).VidTerritory, "territory", "")
             @Html.ValidationMessageFor(model => model.VidTerritory)
         </div>
-        @Html.RenderPartial("Partials/ImagesGallery.cshtml");
+        @Html.Partial("ImagesGallery", (object)SessionFactory.GetNewSession().CreateQuery("from Image i Where VidAdvertise = :id_advertise").SetParameter("id_advertise", ViewBag.id).List<Image>())
+
         <p>
             <input type="submit" value="Zapisz" />
         </p>
+        <p>
+            <input type="button" value="Dodaj zdjęcie" onclick="$(this).addFileUpload()"/>
+        </p>
     </fieldset>
+    
 }
 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/default.js")
 }

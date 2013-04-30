@@ -22,5 +22,9 @@ namespace QuickAd.Controllers
             return View();
         }
 
+        public ActionResult Error() {
+            return View();
+        }
+
     }
 }

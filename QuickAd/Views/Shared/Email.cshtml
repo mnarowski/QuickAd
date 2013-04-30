@@ -1,4 +1,5 @@
-﻿@model QuickAd.Models.Email
+﻿@using QuickAd.Models
+@model QuickAd.Models.Email
 
 <script src="~/Scripts/jquery-1.7.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -25,7 +26,9 @@
             @Html.EditorFor(model => model.Vcontent)
             @Html.ValidationMessageFor(model => model.Vcontent)
         </div>
-
+        
+        <input type="hidden" name="redirect_ok" value="@Request.RawUrl"/>
+        <input type="hidden" name="creator" value="@String.Format("{0}",((Advertise)ViewData["copyModel"]).VidUser)"/>
         <p>
             <input type="submit" value="Wyślij" />
         </p>

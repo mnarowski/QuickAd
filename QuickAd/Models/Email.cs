@@ -28,6 +28,7 @@ namespace QuickAd.Models {
         public Email(User user)
         {
             this.IdRecipent = user.Vid;
+            
         }
 
         public Email() { }
@@ -37,7 +38,8 @@ namespace QuickAd.Models {
 		}
 		public virtual void SetSenderUser(User senderUser) {
 			this.SenderUser = senderUser;
-		}
+            this.VidRecipent = senderUser.GetId();
+        }
 		public virtual String GetContent() {
 			return this.Content;
 		}

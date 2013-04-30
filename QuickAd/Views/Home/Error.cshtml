@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Wystąpił błąd";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Wystąpił problem z naszym serwisem</h2>
+</hgroup>
+
+<article>
+    <p>
+        Możliwa jest przerwa w działaniu serwisu.
+    </p>
+
+    <p>
+        Błąd naszej aplikacji.
+    </p>
+
+    <p>
+        Próba dostępu do zastrzeżonego zasobu.
+    </p>
+</article>
+
+<aside>
+    <h3>Co dalej?</h3>
+    <p>
+        Wybierz co chcesz zrobić
+    </p>
+    <ul>
+        <li>@Html.ActionLink("Główna", "Index", "Home")</li>
+        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+    </ul>
+</aside>

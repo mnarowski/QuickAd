@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using QuickAd.Models;
+using System.IO;
 namespace QuickAd.Controllers
 {
     public class AdvertController : Controller
@@ -41,6 +42,9 @@ namespace QuickAd.Controllers
 
         public ActionResult Create()
         {
+            if (Session["User"] == null) {
+                return RedirectToAction("Error", "Home");
+            }
             Advertise model = new Advertise();
             ViewData.Model = model;
             return View();
@@ -64,6 +68,7 @@ namespace QuickAd.Controllers
                 advertise.SetValidity(validity);
                 advertise.SetVisibleToOthers(true);
                 advertise.SetVisits(0);
+                advertise.VidUser = ((User)Session["User"]).GetId();
                 DBHelper.SaveOrUpdate(advertise);
                 
                 return RedirectToAction("Index");
@@ -73,15 +78,15 @@ namespace QuickAd.Controllers
                 return View();
             }
         }
-
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             Advertise model = DBHelper.FindOne<Advertise>(id);
             ViewData.Model = model;
             
-            if (Session["User"]!=null || (!((User)Session["User"]).IsOwner(model) && !((User)Session["User"]).IsAdmin())) {
-                return RedirectToAction("Index", "Home");
-            }
+           //if (Session["User"]==null || (!((User)Session["User"]).IsOwner(model) && !((User)Session["User"]).IsAdmin())) {
+           //    return RedirectToAction("Error", "Home");
+           // }
             ViewData["copyModel"] = model;
             
             return View();
@@ -97,19 +102,41 @@ namespace QuickAd.Controllers
             {
                 Advertise advertise = DBHelper.FindOne<Advertise>(id);
 
-                advertise.SetAddinationalInfo(collection["addinationInfo"] as string);
-                advertise.SetAdvertCategory(DBHelper.FindOne<AdvertCategory>(id: Int32.Parse(collection["category"])));
-                advertise.SetContent(collection["content"]);
-                advertise.SetHash(DBHelper.generateHash());
-                advertise.SetPrice(Double.Parse(collection["price"]));
-                advertise.SetTitle(collection["title"] as string);
-                DBHelper.SaveOrUpdate(advertise);
+                advertise.SetAddinationalInfo(collection["VaddinationInfo"] as string);
+                advertise.SetAdvertCategory(DBHelper.FindOne<AdvertCategory>( Int32.Parse(collection["category"])));
+                advertise.SetContent(collection["Vcontent"]);
+                advertise.SetPrice(Double.Parse(collection["Vprice"]));
+                advertise.SetTitle(collection["Vtitle"] as string);
+                advertise.VidTerritory = Int32.Parse(collection["territory"]);
                 
-                return RedirectToAction("Index");
+                DBHelper.SaveOrUpdate(advertise);
+                foreach (string file in Request.Files)
+                {
+                    var hpf = this.Request.Files[file];
+                    if (hpf.ContentLength == 0)
+                    {
+                        continue;
+                    }
+
+                    QuickAd.Models.Image img = new QuickAd.Models.Image();
+
+
+                    string savedFileName = Path.Combine(
+                        AppDomain.CurrentDomain.BaseDirectory, "Uploads");
+                    /*Session["User"].ToString() +*/
+                    savedFileName = Path.Combine(savedFileName, Path.GetFileName(hpf.FileName));
+                    img.SetExtension(Path.GetExtension(hpf.FileName));
+                    img.SetImagePath(savedFileName);
+                    img.VidAdvertise = advertise.Vid;
+                    DBHelper.SaveOrUpdate(img);
+
+                    hpf.SaveAs(savedFileName);
+                }  
+                return RedirectToAction("Index","Home");
             }
-            catch
+            catch(Exception e)
             {
-                return View();
+                return RedirectToAction("Error", "Home");
             }
         }
 

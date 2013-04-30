@@ -14,8 +14,8 @@ namespace QuickAd.Models {
             return true;
         }
 		private static void Send() {
-		    if (DateTime.Now > lastSend.AddHours(1))
-		    {
+		    //if (DateTime.Now > lastSend.AddHours(1))
+		    //{
 		        var smtp = new SmtpClient
 		            {
 		                Host = "smtp.gmail.com",
@@ -36,9 +36,9 @@ namespace QuickAd.Models {
 
 		        emails = new List<Email>();
 		        
-		    }
+		    //}
 
-		    lastSend = DateTime.Now;
+		    //lastSend = DateTime.Now;
 		}
 
 		private static List<Email> emails;
