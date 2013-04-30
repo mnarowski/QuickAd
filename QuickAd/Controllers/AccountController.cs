@@ -22,8 +22,8 @@ namespace QuickAd.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection collection) {
             if(Authorize(collection)){
-                string u = (collection["redirect_ok"] == null || collection["redirect_ok"] == String.Empty) ? "/" : collection["redirect_ok"];
-                return Redirect(u);
+                //string u = (collection["redirect_ok"] == null || collection["redirect_ok"] == String.Empty) ? "/" : collection["redirect_ok"];
+                return RedirectToAction("Index","Home");
             }
             ViewBag.Message = "Nie znaleziono użytkownika!";
             return View();
@@ -32,7 +32,7 @@ namespace QuickAd.Controllers
         private bool Authorize(FormCollection collection)
         {
             if (Session["User"] != null) {
-                collection["redirect_ok"] = (collection["redirect_ok"] == null) ? "/" : collection["redirect_ok"];
+                //collection["redirect_ok"] = (collection["redirect_ok"] == null) ? "/" : collection["redirect_ok"];
                 return true;
             }
             String login = collection["Vemail"];
