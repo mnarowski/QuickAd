@@ -22,7 +22,8 @@ namespace QuickAd.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection collection) {
             if(Authorize(collection)){
-                return Redirect(collection["redirect_ok"]);
+                string u = (collection["redirect_ok"] == null || collection["redirect_ok"] == String.Empty) ? "/" : collection["redirect_ok"];
+                return Redirect(u);
             }
             ViewBag.Message = "Nie znaleziono użytkownika!";
             return View();
@@ -31,10 +32,11 @@ namespace QuickAd.Controllers
         private bool Authorize(FormCollection collection)
         {
             if (Session["User"] != null) {
+                collection["redirect_ok"] = (collection["redirect_ok"] == null) ? "/" : collection["redirect_ok"];
                 return true;
             }
-            String login = collection["login"];
-            String password = collection["password"];
+            String login = collection["Vemail"];
+            String password = collection["Vpassword"];
             User u =SessionFactory.GetNewSession().CreateQuery("from User u WHERE u.Vemail=:email AND u.Vpassword=:pass")
                 .SetParameter("email", login)
                 .SetParameter("pass", password).UniqueResult<User>();

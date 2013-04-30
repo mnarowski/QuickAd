@@ -143,7 +143,7 @@ namespace QuickAd.Models {
 		public virtual Email CreateEmailTo(User user) {
 			return new Email(user);
 		}
-        public virtual string ToString() {
+        public virtual string AsString() {
             return String.Format("{0}_", GetId());
         }
 		private List<Email> emails;

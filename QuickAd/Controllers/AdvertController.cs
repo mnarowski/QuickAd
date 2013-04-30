@@ -134,7 +134,7 @@ namespace QuickAd.Controllers
                 }  
                 return RedirectToAction("Index","Home");
             }
-            catch(Exception e)
+            catch
             {
                 return RedirectToAction("Error", "Home");
             }
