@@ -53,7 +53,7 @@
     </div>
 </fieldset>
 
-@Html.Partial("ImagesGallery",(object) SessionFactory.GetNewSession().CreateQuery("from Image i Where VidAdvertise = :id_advertise").SetParameter("id_advertise", ViewBag.id).List<Image>())
+@Html.Partial("ImagesGallery",(object) SessionFactory.GetNewSession().CreateQuery("from Image i Where VidAdvertise = :id_advertise").SetParameter("id_advertise", ((Advertise)ViewData["copyModel"]).Vid).List<Image>())
 @Html.Partial("Email", new Email(DBHelper.FindOne<User>(((Advertise)ViewData["copyModel"]).GetIdUser() )))
 @Html.Partial("AdvertRate", new AdvertRate(Model))
 @Html.Partial("Comment", new Comment(Model))

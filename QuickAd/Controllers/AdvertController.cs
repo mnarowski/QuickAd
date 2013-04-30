@@ -84,9 +84,9 @@ namespace QuickAd.Controllers
             Advertise model = DBHelper.FindOne<Advertise>(id);
             ViewData.Model = model;
             
-           //if (Session["User"]==null || (!((User)Session["User"]).IsOwner(model) && !((User)Session["User"]).IsAdmin())) {
-           //    return RedirectToAction("Error", "Home");
-           // }
+           if (Session["User"]==null || (!((User)Session["User"]).IsOwner(model) && !((User)Session["User"]).IsAdmin())) {
+              return RedirectToAction("Error", "Home");
+           }
             ViewData["copyModel"] = model;
             
             return View();
@@ -126,7 +126,7 @@ namespace QuickAd.Controllers
                     /*Session["User"].ToString() +*/
                     savedFileName = Path.Combine(savedFileName, Path.GetFileName(hpf.FileName));
                     img.SetExtension(Path.GetExtension(hpf.FileName));
-                    img.SetImagePath(savedFileName);
+                    img.SetImagePath(savedFileName.Replace(AppDomain.CurrentDomain.BaseDirectory,"").Replace("\\","/"));
                     img.VidAdvertise = advertise.Vid;
                     DBHelper.SaveOrUpdate(img);
 

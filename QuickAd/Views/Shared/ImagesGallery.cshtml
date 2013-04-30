@@ -6,11 +6,9 @@
 @foreach (Image item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Vpath)
+           <img src="/@Html.DisplayFor(modelItem => item.Vpath)" width="160px" height="160px" />
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vextension)
-        </td>
+        
         <td>
         </td>
     </tr>

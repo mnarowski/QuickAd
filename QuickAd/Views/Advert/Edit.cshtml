@@ -75,7 +75,7 @@
             @Html.BuildSelectRegion(((Advertise)ViewData["copyModel"]).VidTerritory, "territory", "")
             @Html.ValidationMessageFor(model => model.VidTerritory)
         </div>
-        @Html.Partial("ImagesGallery", (object)SessionFactory.GetNewSession().CreateQuery("from Image i Where VidAdvertise = :id_advertise").SetParameter("id_advertise", ViewBag.id).List<Image>())
+        @Html.Partial("ImagesGallery", (object)SessionFactory.GetNewSession().CreateQuery("from Image i Where VidAdvertise = :id_advertise").SetParameter("id_advertise", ((Advertise)ViewData["copyModel"]).Vid).List<Image>())
 
         <p>
             <input type="submit" value="Zapisz" />
