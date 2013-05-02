@@ -64,6 +64,12 @@ namespace QuickAd.Controllers
                 return RedirectToAction("Error", "Home");
             }
             User u = DBHelper.FindOne<User>(id);
+
+            ViewBag.Adverts = SessionFactory.
+                                GetNewSession().
+                                CreateQuery("from Advertise adv WHERE adv.VidUser=:id_user").
+                                SetParameter<int>("id_user", id).
+                                List<Advertise>();
             ViewData.Model = u;
             ViewData["copyModel"] = u;
             return View();
@@ -81,7 +87,14 @@ namespace QuickAd.Controllers
                 return RedirectToAction("Error", "Home");
             }
             User u = sessionUser;
-
+            u.VfirstName = collection["VfirstName"];
+            u.VlastName = collection["VlastName"];
+            u.VdateOfBirth = DateTime.Parse(collection["VdateOfBirth"]);
+            u.Vcity = collection["Vcity"];
+            u.VbuildingNumber = Int32.Parse(collection["VbuildingNumber"]);
+            u.VhomeNumber = Int32.Parse(collection["VhomeNumber"]);
+            u.Vstreet = collection["Vstreet"];
+            u.VphoneNumber = collection["VphoneNumber"];
             Session["User"] = u;
             DBHelper.SaveOrUpdate(u);
             return RedirectToAction("Edit", new { id = u.Vid });
