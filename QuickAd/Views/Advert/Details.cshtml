@@ -54,9 +54,17 @@
 </fieldset>
 
 @Html.Partial("ImagesGallery",(object) SessionFactory.GetNewSession().CreateQuery("from Image i Where VidAdvertise = :id_advertise").SetParameter("id_advertise", ((Advertise)ViewData["copyModel"]).Vid).List<Image>())
-@Html.Partial("Email", new Email(DBHelper.FindOne<User>(((Advertise)ViewData["copyModel"]).GetIdUser() )))
-@Html.Partial("AdvertRate", new AdvertRate(Model))
+@if (Session["User"] != null)
+{
+    if ((Session["User"]).Vid != ((Advertise)ViewData["copyModel"]).VidUser)
+    {
+    @Html.Partial("Email", new Email(DBHelper.FindOne<User>(((Advertise)ViewData["copyModel"]).GetIdUser())))
+    @Html.Partial("AdvertRate", new AdvertRate(Model))
+    
+    }
+}
 @Html.Partial("Comment", new Comment(Model))
+@Html.Partial("CommentsList", (object)SessionFactory.GetNewSession().CreateQuery("from Comment c WHERE c.VidAdvertise=:id_advertise").SetParameter<int>("id_advertise", ((Advertise)ViewData["copyModel"]).Vid).List<Comment>())
 <p>
-    @Html.ActionLink("Back to List", "Index")
+  
 </p>

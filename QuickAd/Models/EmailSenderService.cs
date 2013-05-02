@@ -11,15 +11,16 @@ namespace QuickAd.Models {
 		    
         public static bool SendEmail(Email email) {
 	        emails.Add(email);
+            Send();
             return true;
         }
 		private static void Send() {
 		    //if (DateTime.Now > lastSend.AddHours(1))
 		    //{
-		        var smtp = new SmtpClient
+		        SmtpClient smtp = new SmtpClient
 		            {
 		                Host = "smtp.gmail.com",
-		                Port = 465,
+		                Port = 587,
 		                EnableSsl = true,
 		                DeliveryMethod = SmtpDeliveryMethod.Network,
 		                UseDefaultCredentials = false,
@@ -29,8 +30,11 @@ namespace QuickAd.Models {
 		        foreach (Email email in emails)
 		        {
                     MailMessage mmsg = new MailMessage(DBHelper.FindOne<User>(email.VidSenderUser).Vemail, DBHelper.FindOne<User>(email.VidRecipent).Vemail, email.Vtitle, email.Vcontent);
-		            email.VsendDate = DateTime.Now;
+                    mmsg.Sender = new MailAddress(DBHelper.FindOne<User>(email.VidSenderUser).Vemail);
+                    mmsg.ReplyTo = mmsg.Sender;
+                    email.VsendDate = DateTime.Now;
                     DBHelper.SaveOrUpdate(email);
+                    mmsg.BodyEncoding = System.Text.UTF8Encoding.Unicode;
 		            smtp.Send(mmsg);
 		        }
 
@@ -41,7 +45,7 @@ namespace QuickAd.Models {
 		    //lastSend = DateTime.Now;
 		}
 
-		private static List<Email> emails;
+		private static List<Email> emails = new List<Email>();
 
 	}
 

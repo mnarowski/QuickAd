@@ -21,6 +21,7 @@ namespace QuickAd.Controllers
             email.Vcontent = collection["Vcontent"];
             email.Vtitle = collection["Vtitle"];
             email.VcreatedDate = DateTime.Now;
+            email.VsendDate = DateTime.MaxValue;
             DBHelper.SaveOrUpdate(email);
             EmailSenderService.SendEmail(email);
             return Redirect(collection["redirect_ok"]);

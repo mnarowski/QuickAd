@@ -58,7 +58,7 @@
     <property name="Vtitle" column="title"/>
     <property name="VsendDate" column="send_date" type ="DateTime"/>
     <property name="VisSend" column="is_send" not-null="true"/>
-    <property name="VcreatedDate" column="created_date" type ="DateTime"/>
+    <property name="VcreatedDate" column="create_date" type ="DateTime"/>
   </class>
   
   <!--Class Image-->

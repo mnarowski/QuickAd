@@ -176,5 +176,13 @@ namespace QuickAd.Controllers
         
        }
 
+
+       public ActionResult Rate(FormCollection collection) {
+           AdvertRate rate = new AdvertRate();
+           rate.VidAdvertise = Int32.Parse(collection["advertise"]);
+           rate.Vrate = Int32.Parse(collection["rate"]);
+           DBHelper.SaveOrUpdate(rate);
+           return Redirect(collection["redirect_ok"]);
+       }
     }
 }

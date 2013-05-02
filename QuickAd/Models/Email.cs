@@ -38,7 +38,7 @@ namespace QuickAd.Models {
 		}
 		public virtual void SetSenderUser(User senderUser) {
 			this.SenderUser = senderUser;
-            this.VidRecipent = senderUser.GetId();
+            this.VidSenderUser = senderUser.GetId();
         }
 		public virtual String GetContent() {
 			return this.Content;
