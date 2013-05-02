@@ -323,6 +323,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Admin.cshtml" />
     <Content Include="Views\Advert\Removes.cshtml" />
+    <Content Include="Views\Shared\CommentsList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
