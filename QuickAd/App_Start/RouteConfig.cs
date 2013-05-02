@@ -20,6 +20,12 @@ namespace QuickAd
                 );
 
             routes.MapRoute(
+               name: "Usuwanie fotek",
+               url: "usun-fotke/{id}",
+               defaults: new { controller = "Advert", action = "Removes", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

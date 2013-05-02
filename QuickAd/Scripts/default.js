@@ -5,7 +5,36 @@
     *   jQuery binding
     */
     //$(".gallery").lightbox();
+    /**
+    * Normal functions
+    **/
 
+    QShowDialog = function (msgText) {
+        var div = "<div style='display:none' title='QuickAd - Wiadomość:'>" + msgText + "</a>";
+        var $dlg = $(div);
+        $dlg.dialog({ buttons: [{ text: "Ok", click: function () { $(this).dialog("close"); } }], modal: true });
+        $dlg.dialog();
+        return $dlg;
+    }
+
+    QDeleteImage = function (num) {
+
+        var ur = "/usun-fotke/" + num;
+        $.ajax({
+            url: ur,
+            resultType: "json",
+            success: function (response) {
+                if (response.result) {
+                    QShowDialog(response.message);
+                    setTimeout("window.location.reload()", 1500);
+                }
+                else {
+                    QShowDialog('Nie można wykonać zmian');
+                }
+            }
+        });
+
+    }
     /***
     *
     *   jQuery functions
@@ -17,7 +46,7 @@
         if (imagesSize < 5) {
             $form.append("<input type=\"file\" name=\"file" + imagesSize + "\"/>");
         } else {
-            alert('Nie można dodać więcej niż 5 plików jednorazowo!');
+            QShowDialog('Nie można dodać więcej niż 5 plików jednorazowo!');
         }
     }
 
@@ -38,14 +67,16 @@
         $.post("/Account/Admin", $node_data)
         .success(function (response) {
             if (response.result) {
-                alert('Zmiany wykonano');
+                QShowDialog('Zmiany wykonano');
             }
             else {
-                alert('Nie można wykonać zapisu - Czy pole ma unikalną wartość i od 3 do 32 znaków?');
+                QShowDialog('Nie można wykonać zapisu - Czy pole ma unikalną wartość i od 3 do 32 znaków?');
             }
         })
         .error(function () {
-            alert('Zmiana się nie powiodła');
+            QShowDialog('Zmiana się nie powiodła');
         })
     }
+
+
 });

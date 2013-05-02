@@ -322,6 +322,7 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Admin.cshtml" />
+    <Content Include="Views\Advert\Removes.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

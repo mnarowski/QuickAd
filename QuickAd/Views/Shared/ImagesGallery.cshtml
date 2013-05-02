@@ -3,21 +3,33 @@
 
 <table>
 @{
-    int i=0;
+    int i=1;
     }
-@foreach (Image item in Model) {
-    if(i % 3 == 0){
+@foreach (Image item in Model)
+{
+    if (i % 3 == 0)
+    {
         @String.Format("<tr>")
     }
     
         <td>
+           @if(Session["User"]!= null){
+               if ( ((User)Session["User"]).IsOwner((Advertise) ViewData["copyModel"] ) || ((User)Session["User"]).IsAdmin())
+               {
+                <input type="button" onclick="QDeleteImage('@Html.DisplayFor(modelItem => item.Vid)');return false;" value="X">
+            }
+           }
            <a href="/@Html.DisplayFor(modelItem => item.Vpath)" rel="lightbox[gallery]" onclick="javascript:void(0);"><img class="gallery" src="/@Html.DisplayFor(modelItem => item.Vpath)" width="160px" height="160px" /></a>
         </td>
         
-    if(i % 3 == 0)
+    if (i % 3 == 0)
     {
         @String.Format("</tr>")
     }
+    
+    {
+        i++;
+        }
 }
 
 </table>

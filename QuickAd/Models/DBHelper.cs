@@ -30,6 +30,7 @@ namespace QuickAd.Models
             using (ISession session = SessionFactory.GetNewSession())
             {
                 session.Delete(obj);
+                session.Flush();
             }
         }
 

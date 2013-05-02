@@ -150,9 +150,7 @@ namespace QuickAd.Controllers
             return RedirectToAction("Index");
         }
 
-        //
-        // POST: /Advert/Delete/5
-
+       
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
@@ -165,5 +163,18 @@ namespace QuickAd.Controllers
                 return View();
             }
         }
+       
+       public ActionResult Removes(int id)
+       {
+            QuickAd.Models.Image img = DBHelper.FindOne<QuickAd.Models.Image>(id);
+            string savedFileName = Path.Combine(
+                        AppDomain.CurrentDomain.BaseDirectory, img.GetImagePath());
+
+            System.IO.File.Delete(savedFileName);
+            DBHelper.Delete(img);
+            return Json(new { result = true, message = "Zdjęcie usunięto!" },JsonRequestBehavior.AllowGet);
+        
+       }
+
     }
 }
