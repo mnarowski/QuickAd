@@ -2,16 +2,23 @@
 @model IEnumerable<QuickAd.Models.Image>
 
 <table>
-   
+@{
+    int i=0;
+    }
 @foreach (Image item in Model) {
-    <tr>
+    if(i % 3 == 0){
+        @String.Format("<tr>")
+    }
+    
         <td>
-           <img src="/@Html.DisplayFor(modelItem => item.Vpath)" width="160px" height="160px" />
+           <a href="/@Html.DisplayFor(modelItem => item.Vpath)" rel="lightbox[gallery]" onclick="javascript:void(0);"><img class="gallery" src="/@Html.DisplayFor(modelItem => item.Vpath)" width="160px" height="160px" /></a>
         </td>
         
-        <td>
-        </td>
-    </tr>
+    if(i % 3 == 0)
+    {
+        @String.Format("</tr>")
+    }
 }
 
 </table>
+

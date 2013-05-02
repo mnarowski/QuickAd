@@ -1,6 +1,15 @@
 ﻿$(function () {
     console.log("Welcome in QuickAd");
+    /**
+    *
+    *   jQuery binding
+    */
+    //$(".gallery").lightbox();
 
+    /***
+    *
+    *   jQuery functions
+    */
     $.fn.addFileUpload = function () {
         var self = this;
         var $form = self.closest("form");

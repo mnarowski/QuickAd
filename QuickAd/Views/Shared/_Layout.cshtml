@@ -6,6 +6,8 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/jquery.ui.all.css")
+        @Styles.Render("~/Content/css/lightbox.css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
@@ -20,8 +22,8 @@
                     <nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("Główna", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Konto", "Index", "Home")</li>
-                            <li>@Html.RouteLink("Zaloguj się", "Zaloguj", new { redirect_ok=Url.RequestContext.HttpContext.Request.Path })</li>
+                            <li>@Html.ActionLink("Konto", "Edit", "Account")</li>
+                            <li>@Html.RouteLink("Zaloguj się", "Zaloguj")</li>
                             <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                             <li>@Html.ActionLink("Dodaj nowe!", "Create", "Advert")</li>
                         </ul>
@@ -44,6 +46,9 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/Scripts/jquery-ui-1.8.20.js");
+        @Scripts.Render("~/Scripts/lightbox.js");
+    
         @RenderSection("scripts", required: false)
     </body>
 </html>
