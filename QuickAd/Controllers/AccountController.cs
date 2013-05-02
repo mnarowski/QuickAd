@@ -54,6 +54,67 @@ namespace QuickAd.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        [HttpGet]
+        public ActionResult Edit(int id) {
+            if (Session["User"] == null) {
+                return RedirectToAction("Error", "Home");
+            }
+            User sessionUser = (User)Session["User"];
+            if (sessionUser.Vid != id) {
+                return RedirectToAction("Error", "Home");
+            }
+            User u = DBHelper.FindOne<User>(id);
+            ViewData.Model = u;
+            ViewData["copyModel"] = u;
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection) {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            User sessionUser = (User)Session["User"];
+            if (sessionUser.Vid != id)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            User u = sessionUser;
+
+            Session["User"] = u;
+            DBHelper.SaveOrUpdate(u);
+            return RedirectToAction("Edit", new { id = u.Vid });
+        }
+
+        [HttpGet]
+        public ActionResult Register() {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(FormCollection collection) {
+            return RedirectToAction("Register");
+        }
+
+        [HttpGet]
+        public ActionResult Admin()
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            User sessionUser = (User)Session["User"];
+            if (!sessionUser.IsAdmin())
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Admin(FormCollection collection) {
+            return new JsonResult();        
+        }
     }
 }
