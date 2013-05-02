@@ -1,0 +1,26 @@
+﻿@using QuickAd.Models
+@using QuickAd.ViewHelpers
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Administracja polami słownikowymi</h2>
+<h3>Regiony:</h3>
+@foreach (Territory t in DBHelper.GetAll<Territory>()) { 
+    <div class="block">
+    <input type="text" name="territory" class="territory" data-desc="@t.GetId()" data-val="@Html.GetTerritoryId(t)" value="@t.GetName()"/>
+    <input type="button" data-desc="@t.GetId()" class="territory" value="Zmień" onclick="$(this).changeField('terrority')">
+    </div>
+}
+<h3>Kategorie:</h3>
+@foreach (AdvertCategory ac in DBHelper.GetAll<AdvertCategory>()) { 
+    <div class="block">
+    <input type="text" name="advertcategory" class="advertcategory" data-desc="@ac.GetId()" data-val="@ac.GetId()" value="@ac.GetName()"/>
+    <input type="button" data-desc="@ac.GetId()" class="advertcategory" value="Zmień" onclick="$(this).changeField('advertcategory')">
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/default.js");
+}

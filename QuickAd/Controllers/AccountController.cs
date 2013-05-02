@@ -114,7 +114,53 @@ namespace QuickAd.Controllers
         }
         [HttpPost]
         public ActionResult Admin(FormCollection collection) {
-            return new JsonResult();        
+            string type = collection["type"];
+            string name = collection["value"];
+            int id = Int32.Parse(collection["id"]);
+            bool res = false;
+            if (name.Length > 3 && name.Length < 32) {
+                if (type.Equals("terrority"))
+                {
+                    res = EditTerritory(id, name);
+                }
+
+                if (type.Equals("advertcategory")) {
+                    res = EditAdvertCategory(id, name);
+                }
+            }
+            return Json(new { result = res });        
+        }
+
+        private bool EditTerritory(int id, string name)
+        {
+            NHibernate.IQuery fetch = SessionFactory.GetNewSession().CreateQuery("from Territory t WHERE t.Vname=:name")
+                .SetParameter<string>("name", name);
+            List<Territory> listT = (List<Territory>)fetch.List<Territory>();
+            if (listT.Capacity > 0)
+            {
+                return false;
+            }
+
+            Territory territory = DBHelper.FindOne<Territory>(id);
+            territory.Vname = name;
+            DBHelper.SaveOrUpdate(territory);
+            return true;
+        }
+
+        private bool EditAdvertCategory(int id, string name)
+        {
+            NHibernate.IQuery fetch = SessionFactory.GetNewSession().CreateQuery("from AdvertCategory t WHERE t.Vname=:name")
+                .SetParameter<string>("name", name);
+            List<AdvertCategory> listT = (List<AdvertCategory> )fetch.List<AdvertCategory>();
+            if (listT.Capacity > 0)
+            {
+                return false;
+            }
+
+            AdvertCategory territory = DBHelper.FindOne<AdvertCategory>(id);
+            territory.SetName(name);
+            DBHelper.SaveOrUpdate(territory);
+            return true;
         }
     }
 }

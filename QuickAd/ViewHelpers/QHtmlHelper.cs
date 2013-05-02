@@ -58,5 +58,13 @@ namespace QuickAd.ViewHelpers
             return res;
         }
 
+
+        public static MvcHtmlString GetTerritoryId(this HtmlHelper helper, Territory t) {
+            return MvcHtmlString.Create(String.Format("{0}", t.GetId()));
+        }
+
+        public static MvcHtmlString GetCategoryId(this HtmlHelper helper, AdvertCategory ac) {
+            return MvcHtmlString.Create(String.Format("{0}", ac.GetId()));
+        }
     }
 }

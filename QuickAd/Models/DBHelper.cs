@@ -23,6 +23,7 @@ namespace QuickAd.Models
             using (ISession session = SessionFactory.GetNewSession())
             {
                 session.SaveOrUpdate(obj);
+                session.Flush();
             }
 		}
 		public static void Delete(Object obj) {
