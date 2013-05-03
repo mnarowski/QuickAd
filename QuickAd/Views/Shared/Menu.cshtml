@@ -1,0 +1,13 @@
+﻿<ul id="menu">
+            <li>@Html.ActionLink("Główna", "Index", "Home")</li>
+            @if (Session["User"] == null)
+            {
+               <li>@Html.RouteLink("Zaloguj się", "Zaloguj")</li>
+            }
+            else {
+               <li>@Html.ActionLink("Konto", "Edit", "Account")</li>
+               <li>@Html.ActionLink("Dodaj nowe!", "Create", "Advert")</li>
+               <li>@Html.ActionLink("Wyloguj", "Logout", "Account")</li>
+            }
+              <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+</ul>

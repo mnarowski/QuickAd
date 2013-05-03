@@ -20,13 +20,7 @@
                 <div class="float-right">
                     
                     <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Główna", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Konto", "Edit", "Account")</li>
-                            <li>@Html.RouteLink("Zaloguj się", "Zaloguj")</li>
-                            <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Dodaj nowe!", "Create", "Advert")</li>
-                        </ul>
+                        @Html.Partial("Menu")
                     </nav>
                 </div>
             </div>

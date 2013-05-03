@@ -287,9 +287,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\ColumnRightLogged.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Advert\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +321,7 @@
     <Content Include="Views\Account\Admin.cshtml" />
     <Content Include="Views\Advert\Removes.cshtml" />
     <Content Include="Views\Shared\CommentsList.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

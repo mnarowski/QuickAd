@@ -18,7 +18,7 @@ namespace QuickAd.Models {
 		public virtual string Vcontent {get {return this.Content;} set { this.Content = value; }}
         public virtual DateTime VcreatedDate {get { return this.CreatedAt; } set { this.CreatedAt = value; }}
         public virtual int VidAdvertise {get { return this.IdAdvert; } set { this.IdAdvert = value; }}
-        public virtual int VidUser { get { return this.IdUSer; } set { this.IdUser = value; } }
+        public virtual int VidUser { get { return this.IdUser; } set { this.IdUser = value; } }
         public Comment() { }
 
         public Comment(Advertise adv) {
