@@ -43,10 +43,24 @@
         var self = this;
         var $form = self.closest("form");
         var imagesSize = $form.children("input[type=file]").size();
-        if (imagesSize < 5) {
-            $form.append("<input type=\"file\" name=\"file" + imagesSize + "\"/>");
+        var imgSize = $('img').size();
+
+        if (imagesSize + imgSize < 5) {
+            var $fileInput = $("<input type=\"file\" name=\"file" + imagesSize + "\"/>");
+            $fileInput.change(function (ev) {
+                var self = this;
+                var regex = /\.jp(e?)g$/i;
+                if (regex.test($(self).val())) {
+                    return $(self);
+                }
+                $(self).val('');
+                QShowDialog("Można dodać tylko pliki w formacie jpeg!");
+                e.preventDefault();
+                return false;
+            });
+            $form.append($fileInput);
         } else {
-            QShowDialog('Nie można dodać więcej niż 5 plików jednorazowo!');
+            QShowDialog('Nie można dodać więcej niż 5 plików!');
         }
     }
 

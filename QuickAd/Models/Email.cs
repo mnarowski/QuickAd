@@ -17,7 +17,7 @@ namespace QuickAd.Models {
         public virtual int Vid {get { return this.Id; } set { this.Id = value; }}
         public virtual int VidSenderUser {get { return this.IdSender; } set { this.IdSender = value; }}
         public virtual int VidRecipent {get { return this.IdRecipent; } set { this.IdRecipent = value; }}
-        [Required, MinLength(3), MaxLength(1000),Display(Name="Treœæ wiadomoœci")]
+        [Required, MinLength(3), MaxLength(1000),Display(Name="Treœæ wiadomoœci"),DataType(DataType.MultilineText)]
         public virtual string Vcontent {get { return this.Content; } set { this.Content = value; }}
         [Required, MinLength(3), MaxLength(255),Display(Name="Tytu³ wiadomoœci")]
         public virtual string Vtitle {get { return this.Title; } set { this.Title = value; }}
