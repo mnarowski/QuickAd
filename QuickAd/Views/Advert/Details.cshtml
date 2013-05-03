@@ -62,8 +62,9 @@
     @Html.Partial("AdvertRate", new AdvertRate(Model))
     
     }
+    @Html.Partial("Comment", new Comment(Model))
+
 }
-@Html.Partial("Comment", new Comment(Model))
 @Html.Partial("CommentsList", (object)SessionFactory.GetNewSession().CreateQuery("from Comment c WHERE c.VidAdvertise=:id_advertise").SetParameter<int>("id_advertise", ((Advertise)ViewData["copyModel"]).Vid).List<Comment>())
 <p>
   

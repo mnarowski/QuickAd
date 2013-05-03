@@ -45,6 +45,7 @@
     <property name="Vcontent" column="content" not-null="true"/>
     <property name="VcreatedDate" column="created_date" type ="DateTime" not-null="true"/>
     <property name="VidAdvertise" column="id_advertise" not-null="true"/>
+    <property name="VidUser" column="id_user" not-null="true"/>
   </class>
   
   <!--Class Email-->
