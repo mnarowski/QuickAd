@@ -58,14 +58,16 @@
 {
     if (((User)Session["User"]).Vid != ((Advertise)ViewData["copyModel"]).VidUser)
     {
-    @Html.Partial("Email", new Email(DBHelper.FindOne<User>(((Advertise)ViewData["copyModel"]).GetIdUser())))
-    @Html.Partial("AdvertRate", new AdvertRate(Model))
+       @Html.Partial("Email", new Email(DBHelper.FindOne<User>(((Advertise)ViewData["copyModel"]).GetIdUser())))
+       @Html.Partial("AdvertRate", new AdvertRate(Model))
     
     }
     @Html.Partial("Comment", new Comment(Model))
 
 }
-@Html.Partial("CommentsList", (object)SessionFactory.GetNewSession().CreateQuery("from Comment c WHERE c.VidAdvertise=:id_advertise").SetParameter<int>("id_advertise", ((Advertise)ViewData["copyModel"]).Vid).List<Comment>())
-<p>
-  
-</p>
+
+@Html.Partial("CommentsList", SessionFactory.GetNewSession()
+                               .CreateQuery("from Comment c WHERE c.VidAdvertise=:id_advertise ORDER BY c.VcreatedDate DESC")
+                               .SetParameter<int>("id_advertise", ((Advertise)ViewData["copyModel"]).Vid)
+                               .List<Comment>()
+                               )

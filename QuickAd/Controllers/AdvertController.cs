@@ -180,8 +180,19 @@ namespace QuickAd.Controllers
        public ActionResult Rate(FormCollection collection) {
            AdvertRate rate = new AdvertRate();
            rate.VidAdvertise = Int32.Parse(collection["advertise"]);
-           rate.Vrate = Int32.Parse(collection["rate"]);
+           rate.Vrate = Int32.Parse(collection["Vrate"]);
            DBHelper.SaveOrUpdate(rate);
+           return Redirect(collection["redirect_ok"]);
+       }
+       [HttpPost]
+       public ActionResult Comment(FormCollection collection) {
+           Comment comment = new Comment();
+           comment.Vcontent = collection["Vcontent"];
+           comment.VcreatedDate = DateTime.Now;
+           comment.Vtitle = collection["Vtitle"];
+           comment.VidUser = ((User)Session["User"]).Vid;
+           comment.VidAdvertise = Int32.Parse(collection["creator"]);
+           DBHelper.SaveOrUpdate(comment);
            return Redirect(collection["redirect_ok"]);
        }
     }

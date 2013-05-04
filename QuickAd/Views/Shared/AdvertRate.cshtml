@@ -1,8 +1,20 @@
-﻿@model QuickAd.Models.AdvertRate
+﻿@using QuickAd.Models
+@model QuickAd.Models.AdvertRate
 
 <script src="~/Scripts/jquery-1.7.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@{
+    List<AdvertRate> rates = (List<AdvertRate>)SessionFactory.GetNewSession().CreateQuery("from AdvertRate ar WHERE ar.VidAdvertise = :id")
+        .SetParameter<int>("id",((Advertise)ViewData["copyModel"]).Vid).List<AdvertRate>();
+        int sum = 0;
+        foreach(AdvertRate rate in rates)
+        {
+            sum += rate.Vrate;
+        }
+        double res = sum/rates.Count;
+}
+<h4>Ocena całkowita: @String.Format("{0}",res) na @String.Format("{0}",rates.Count) głosów</h4>
 
 @using (Html.BeginForm("Rate","Advert")) {
     @Html.ValidationSummary(true)
@@ -14,10 +26,12 @@
             @Html.LabelFor(model => model.Vrate)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Vrate, new { type="range",max="5",min="1"})
+            @Html.TextBoxFor(model => model.Vrate, new { type="number",max="5",min="1",value="1"})
             @Html.ValidationMessageFor(model => model.Vrate)
         </div>
-
+        
+        <input type="hidden" name="redirect_ok" value="@Request.RawUrl"/>
+        <input type="hidden" name="advertise" value="@String.Format("{0}",((Advertise)ViewData["copyModel"]).Vid)"/>
         <p>
             <input type="submit" value="Oceń" />
         </p>

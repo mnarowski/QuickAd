@@ -1,10 +1,11 @@
-﻿@model QuickAd.Models.Comment
+﻿@using QuickAd.Models
+@model QuickAd.Models.Comment
 
 <script src="~/Scripts/jquery-1.7.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
-@using (Html.BeginForm("Comment")) {
+@using (Html.BeginForm("Comment","Advert",FormMethod.Post)) {
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -25,7 +26,8 @@
             @Html.EditorFor(model => model.Vcontent)
             @Html.ValidationMessageFor(model => model.Vcontent)
         </div>
-
+        <input type="hidden" name="redirect_ok" value="@Request.RawUrl"/>
+        <input type="hidden" name="creator" value="@String.Format("{0}",((Advertise)ViewData["copyModel"]).Vid)"/>
         <p>
             <input type="submit" value="Wyślij" />
         </p>
