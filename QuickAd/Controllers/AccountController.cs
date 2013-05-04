@@ -94,6 +94,7 @@ namespace QuickAd.Controllers
             u.VbuildingNumber = Int32.Parse(collection["VbuildingNumber"]);
             u.VhomeNumber = Int32.Parse(collection["VhomeNumber"]);
             u.Vstreet = collection["Vstreet"];
+            u.VidSex = Int32.Parse(collection["VSex"]);
             u.VphoneNumber = collection["VphoneNumber"];
             Session["User"] = u;
             DBHelper.SaveOrUpdate(u);
@@ -107,7 +108,28 @@ namespace QuickAd.Controllers
 
         [HttpPost]
         public ActionResult Register(FormCollection collection) {
-            return RedirectToAction("Register");
+            User user = new User();
+            string email = collection["Vemail"];
+            User u = SessionFactory.GetNewSession().CreateQuery("from User u WHERE u.Vemail = :email").SetParameter("email", email).UniqueResult<User>();
+            if (u != null) {
+                ViewBag.Message = "Login na podany adres istnieje";
+                return View();
+            }
+
+            user.SetEmail(email);
+            user.SetPassword(collection["Vpassword"]);
+            user.Vprivillage = 1;
+            user.VidSex = Int32.Parse(collection["VSex"]);
+            user.SetStreet(collection["VStreet"]);
+            user.SetLastName(collection["VlastName"]);
+            user.SetFirstName(collection["VfirstName"]);
+            user.SetDateOfBirth(DateTime.Parse(collection["VdateOfBirth"]));
+            user.SetCity(collection["Vcity"]);
+            user.SetBuildingNumber(Int32.Parse(collection["VbuildingNumber"]));
+            user.SetPhoneNumber(collection["VphoneNumber"]);
+            user.SetHomeNumber(Int32.Parse(collection["VhomeNumber"]));
+            DBHelper.SaveOrUpdate(user);
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpGet]

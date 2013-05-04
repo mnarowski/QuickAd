@@ -94,10 +94,10 @@
     <property name="Vstreet" column="street"/>
     <property name="VbuildingNumber" column="building_number"/>
     <property name="VhomeNumber" column="home_number"/>
-    <property name="VidSex" column="building_number" not-null="true"/>
+    <property name="VidSex" column="id_sex" not-null="true"/>
     <property name="Vpassword" column="password" not-null="true"/>
     <property name="VphoneNumber" column="phone_number"/>
-    <property name="Vprivillage" column="privillage"/>
+    <property name="Vprivillage" column="privillage" type="int" not-null="true"/>
   </class>
   
 </hibernate-mapping>

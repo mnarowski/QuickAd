@@ -16,7 +16,7 @@ namespace QuickAd.Models {
 		private String Password;
 		private String PhoneNumber;
 		private String Hash;
-		private int Privillage;
+		private int Priv;
 		private int Id;
 	    private int IdSex;
         [Display(Name = "id")]
@@ -44,7 +44,7 @@ namespace QuickAd.Models {
         [Display(Name = "Numer telefonu"),DataType(DataType.PhoneNumber)]
         public virtual string VphoneNumber { get { return this.PhoneNumber; } set { this.PhoneNumber = value; } }
         [Display(Name = "Uprawnienia")]
-        public virtual int Vprivillage { get { return this.Privillage; } set { this.Privillage = value; } }
+        public virtual int Vprivillage { get { return this.Priv; } set { this.Priv = value; } }
 
         public User() { }
 
@@ -121,14 +121,14 @@ namespace QuickAd.Models {
 			this.Hash = hash;
 		}
 		public virtual int GetPrivillage() {
-			return this.Privillage;
+			return this.Priv;
 		}
 		public virtual void SetPrivillage(int privillage) {
-			this.Privillage = privillage;
+			this.Priv = privillage;
 		}
 		public virtual bool IsAdmin()
 		{
-		    return (Privillage > 1);
+		    return (Priv > 1);
 		}
 		public virtual bool IsOwner(Advertise adv)
 		{
