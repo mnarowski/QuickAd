@@ -55,20 +55,18 @@ namespace QuickAd.Controllers
             return RedirectToAction("Index", "Home");
         }
         [HttpGet]
-        public ActionResult Edit(int id) {
+        public ActionResult Edit() {
             if (Session["User"] == null) {
                 return RedirectToAction("Error", "Home");
             }
             User sessionUser = (User)Session["User"];
-            if (sessionUser.Vid != id) {
-                return RedirectToAction("Error", "Home");
-            }
-            User u = DBHelper.FindOne<User>(id);
+
+            User u = sessionUser;
 
             ViewBag.Adverts = SessionFactory.
                                 GetNewSession().
                                 CreateQuery("from Advertise adv WHERE adv.VidUser=:id_user").
-                                SetParameter<int>("id_user", id).
+                                SetParameter<int>("id_user", u.Vid).
                                 List<Advertise>();
             ViewData.Model = u;
             ViewData["copyModel"] = u;
@@ -76,16 +74,13 @@ namespace QuickAd.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection) {
+        public ActionResult Edit(FormCollection collection) {
             if (Session["User"] == null)
             {
                 return RedirectToAction("Error", "Home");
             }
             User sessionUser = (User)Session["User"];
-            if (sessionUser.Vid != id)
-            {
-                return RedirectToAction("Error", "Home");
-            }
+            
             User u = sessionUser;
             u.VfirstName = collection["VfirstName"];
             u.VlastName = collection["VlastName"];

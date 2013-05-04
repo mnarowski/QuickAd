@@ -3,47 +3,29 @@
 
 @{
     ViewBag.Title = "CommentsList";
-    var c = ViewData;
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Komentarze</h2>
+@{int size = ((List<Comment>)Model).Count;
+  
+  }
+@if (size > 0)
+{
+<h4>Komentarze</h4>
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Vtitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vcontent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VcreatedDate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (Comment item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vtitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vcontent)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VcreatedDate)
-        </td>
-        <td>
+<div class="comment-div">
+@foreach (Comment item in Model)
+{
+    <div class="comment-div-header"><b>@String.Format("{0}", DBHelper.FindOne<User>(item.VidUser).Vemail)</b>, dnia <b>@Html.DisplayFor(modelItem => item.VcreatedDate)</b> pisze:<br> <strong>@Html.DisplayFor(modelItem => item.Vtitle)</strong></div>        
+    <div>@Html.DisplayFor(modelItem => item.Vcontent)</div>
+    <div>
            @if (Session["User"] != null)
            {
                if (((User)Session["User"]).IsAdmin())
                {
-                @Html.ActionLink("Delete", "Delete", new { id = item.Vid })
+                @Html.ActionLink("Delete", "DeleteComment", new { id = item.Vid })
                }
            }
-        </td>
-    </tr>
+     </div>
 }
-
-</table>
+</div>
+}

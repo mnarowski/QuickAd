@@ -195,5 +195,13 @@ namespace QuickAd.Controllers
            DBHelper.SaveOrUpdate(comment);
            return Redirect(collection["redirect_ok"]);
        }
+
+       public ActionResult DeleteComment(int id) {
+           Comment cToDelete = DBHelper.FindOne<Comment>(id);
+           int advertLinkId = cToDelete.VidAdvertise;
+           DBHelper.Delete(cToDelete);
+
+           return RedirectToAction("Details", new { id = advertLinkId });
+       }
     }
 }

@@ -17,9 +17,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Vvisits)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vprice)
-        </th>
         <th></th>
     </tr>
 
@@ -29,9 +26,6 @@
             @Html.DisplayFor(modelItem => item.Vtitle)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.VidUser)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Vcontent)
         </td>
         <td>
@@ -39,9 +33,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Vvisits)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vprice)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new {  id=item.Vid  }) |

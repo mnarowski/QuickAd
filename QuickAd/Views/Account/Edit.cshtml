@@ -76,7 +76,7 @@
             @Html.LabelFor(model => model.VidSex)
         </div>
         <div class="editor-field">
-            @Html.GetSexSelect(((User)ViewData["copyModel"]).VIdSex)
+            @Html.GetSexSelect(((User)ViewData["copyModel"]).VidSex)
             @Html.ValidationMessageFor(model => model.VidSex)
         </div>
 
@@ -95,7 +95,7 @@
     </fieldset>
 }
 
-@Html.Partial("OwnAdvertsList",ViewBag.Adverts)
+@Html.Partial("OwnAdvertsList",(object)ViewBag.Adverts)
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

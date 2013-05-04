@@ -793,3 +793,20 @@ tr.pager td {
 {
     display:block;
 }
+
+.comment-div 
+{
+    border-radius: 10px;
+    color: black;
+    padding: 10px;
+    background-color: White;
+    
+   }
+
+.comment-div > div 
+{
+    display:block;
+    margin:5px 0 0 0;
+}
+
+ 

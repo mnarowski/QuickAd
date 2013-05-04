@@ -16,6 +16,7 @@ namespace QuickAd.Models {
         public virtual string Vtitle {get { return this.Title; } set { this.Title = value; }}
         [Required, MinLength(10),Display(Name="Zawartoœæ"),DataType(DataType.MultilineText)]
 		public virtual string Vcontent {get {return this.Content;} set { this.Content = value; }}
+        [Display(Name="Data dodania")]
         public virtual DateTime VcreatedDate {get { return this.CreatedAt; } set { this.CreatedAt = value; }}
         public virtual int VidAdvertise {get { return this.IdAdvert; } set { this.IdAdvert = value; }}
         public virtual int VidUser { get { return this.IdUser; } set { this.IdUser = value; } }
