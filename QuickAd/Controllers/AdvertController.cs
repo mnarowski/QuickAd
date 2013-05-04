@@ -123,8 +123,8 @@ namespace QuickAd.Controllers
 
                     string savedFileName = Path.Combine(
                         AppDomain.CurrentDomain.BaseDirectory, "Uploads");
-                    /*Session["User"].ToString() +*/
-                    savedFileName = Path.Combine(savedFileName, Path.GetFileName(hpf.FileName));
+                    
+                    savedFileName = Path.Combine(savedFileName, ((User)Session["User"]).AsString()+Path.GetFileName(hpf.FileName));
                     img.SetExtension(Path.GetExtension(hpf.FileName));
                     img.SetImagePath(savedFileName.Replace(AppDomain.CurrentDomain.BaseDirectory,"").Replace("\\","/"));
                     img.VidAdvertise = advertise.Vid;
