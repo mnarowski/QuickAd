@@ -80,14 +80,6 @@
     </id>
     <property name="Vname" column="name" not-null ="true"/>
   </class>
-  
-  <!--Class Sex-->
-  <class name="Sex" table="Sex" schema="dbo" lazy="true">
-    <id name="Vid" column="id_territory">
-      <generator class="identity"/>
-    </id>
-    <property name="Vname" column="name" not-null ="true"/>
-  </class>
 
   <!--Class User-->
   <class name="User" table="Users" schema="dbo" lazy="true">

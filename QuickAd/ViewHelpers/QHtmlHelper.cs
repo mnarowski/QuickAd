@@ -66,5 +66,30 @@ namespace QuickAd.ViewHelpers
         public static MvcHtmlString GetCategoryId(this HtmlHelper helper, AdvertCategory ac) {
             return MvcHtmlString.Create(String.Format("{0}", ac.GetId()));
         }
+
+        public static MvcHtmlString GetSexSelect(this HtmlHelper helper, int selected = 1) {
+            string frmt = "<option name=\"{0}\" title=\"{0}\" value=\"{1}\">{0}</option>";
+            string frmt_selected = "<option name=\"{0}\" title=\"{0}\" value=\"{1}\" selected=\"selected\">{0}</option>";
+            string select = "<select name=\"VSex\">{0}</select>";
+            string optionsString = "";
+            if (selected == 1)
+            {
+                optionsString += String.Format(frmt_selected, "Mężczyzna", 1);
+            }
+            else {
+                optionsString += String.Format(frmt, "Mężczyzna", 1);
+            }
+
+            if (selected == 2)
+            {
+                optionsString += String.Format(frmt_selected, "Kobieta", 2);
+            }
+            else
+            {
+                optionsString += String.Format(frmt, "Kobieta", 2);
+            }
+
+            return MvcHtmlString.Create(String.Format(select,optionsString));
+        }
     }
 }

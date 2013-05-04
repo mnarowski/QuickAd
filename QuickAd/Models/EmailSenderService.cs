@@ -31,7 +31,7 @@ namespace QuickAd.Models {
 		        {
                     MailMessage mmsg = new MailMessage(DBHelper.FindOne<User>(email.VidSenderUser).Vemail, DBHelper.FindOne<User>(email.VidRecipent).Vemail, email.Vtitle, email.Vcontent);
                     mmsg.Sender = new MailAddress(DBHelper.FindOne<User>(email.VidSenderUser).Vemail);
-                    mmsg.ReplyTo = mmsg.Sender;
+                    mmsg.ReplyToList.Add(mmsg.Sender);
                     email.VsendDate = DateTime.Now;
                     DBHelper.SaveOrUpdate(email);
                     mmsg.BodyEncoding = System.Text.UTF8Encoding.Unicode;

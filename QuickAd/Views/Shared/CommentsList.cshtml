@@ -6,11 +6,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CommentsList</h2>
+<h2>Komentarze</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table>
     <tr>
         <th>
@@ -21,9 +18,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.VcreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.VidAdvertise)
         </th>
         <th></th>
     </tr>

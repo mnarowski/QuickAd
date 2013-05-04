@@ -1,4 +1,5 @@
-﻿@model QuickAd.Models.User
+﻿@using QuickAd.ViewHelpers
+@model QuickAd.Models.User
 
 @{
     ViewBag.Title = "Register";
@@ -90,7 +91,7 @@
             @Html.LabelFor(model => model.VidSex)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VidSex)
+            @Html.GetSexSelect()
             @Html.ValidationMessageFor(model => model.VidSex)
         </div>
 

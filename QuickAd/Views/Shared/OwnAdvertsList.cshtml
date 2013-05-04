@@ -1,13 +1,9 @@
 ﻿@model IEnumerable<QuickAd.Models.Advertise>
 
-@{
-    ViewBag.Title = "Lista ogłoszeń";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>@ViewBag.Title</h2>
-
-<table class="advertsTable">
+<p>
+    @Html.ActionLink("Dodaj nową", "Create","Advert")
+</p>
+<table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Vtitle)
@@ -27,10 +23,13 @@
         <th></th>
     </tr>
 
-@foreach (QuickAd.Models.Advertise item in Model) {
+@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Vtitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VidUser)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Vcontent)
@@ -45,7 +44,9 @@
             @Html.DisplayFor(modelItem => item.Vprice)
         </td>
         <td>
-            @Html.ActionLink("Zobacz", "Details", new { id=item.Vid }) 
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Vid  }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.Vid  }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.Vid  })
         </td>
     </tr>
 }

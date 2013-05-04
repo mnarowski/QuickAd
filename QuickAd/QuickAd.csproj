@@ -135,7 +135,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AdvertRate.cs" />
     <Compile Include="Models\AdvertCategory.cs" />
     <Compile Include="Models\Advertise.cs" />
@@ -322,6 +321,7 @@
     <Content Include="Views\Advert\Removes.cshtml" />
     <Content Include="Views\Shared\CommentsList.cshtml" />
     <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\Shared\OwnAdvertsList.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,6 @@
-﻿@model QuickAd.Models.User
+﻿@using QuickAd.Models
+@using QuickAd.ViewHelpers
+@model QuickAd.Models.User
 
 @{
     ViewBag.Title = "Edit";
@@ -74,7 +76,7 @@
             @Html.LabelFor(model => model.VidSex)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.VidSex)
+            @Html.GetSexSelect(((User)ViewData["copyModel"]).VIdSex)
             @Html.ValidationMessageFor(model => model.VidSex)
         </div>
 
@@ -93,6 +95,7 @@
     </fieldset>
 }
 
+@Html.Partial("OwnAdvertsList",ViewBag.Adverts)
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
