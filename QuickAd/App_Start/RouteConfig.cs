@@ -15,8 +15,8 @@ namespace QuickAd
 
             routes.MapRoute(
             name: "Zaloguj",
-            url: "zaloguj/{redirect_ok}",
-            defaults: new { controller = "Account", action = "Login", redirect_ok = "/" }
+            url: "zaloguj/",
+            defaults: new { controller = "Account", action = "Login" }
                 );
 
             routes.MapRoute(
