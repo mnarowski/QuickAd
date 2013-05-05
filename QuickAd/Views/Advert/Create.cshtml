@@ -1,4 +1,5 @@
-﻿@model QuickAd.Models.Advertise
+﻿@using QuickAd.ViewHelpers
+@model QuickAd.Models.Advertise
 
 @{
     ViewBag.Title = "Dodaj nowe ogłoszenie";
@@ -6,8 +7,9 @@
 }
 
 <h2>Create</h2>
+<div class="error">@ViewBag.Message</div>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create","Advert",FormMethod.Post)) {
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -28,24 +30,7 @@
             @Html.EditorFor(model => model.Vcontent)
             @Html.ValidationMessageFor(model => model.Vcontent)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Vvalidity)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Vvalidity)
-            @Html.ValidationMessageFor(model => model.Vvalidity)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Vvisits)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Vvisits)
-            @Html.ValidationMessageFor(model => model.Vvisits)
-        </div>
-
-        <div class="editor-label">
+<div class="editor-label">
             @Html.LabelFor(model => model.Vprice)
         </div>
         <div class="editor-field">
@@ -59,6 +44,22 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.VadditionalInfo)
             @Html.ValidationMessageFor(model => model.VadditionalInfo)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VidAdvertCategory)
+        </div>
+        <div class="editor-field">
+            
+            @Html.BuildSelectCategories(1, "category", "")
+            @Html.ValidationMessageFor(model => model.VidAdvertCategory)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VidTerritory)
+        </div>
+        <div class="editor-field">
+            @Html.BuildSelectRegion(1, "territory", "")
+            @Html.ValidationMessageFor(model => model.VidTerritory)
         </div>
         <p>
             <input type="submit" value="Dodaj!" />

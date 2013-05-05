@@ -57,24 +57,25 @@ namespace QuickAd.Controllers
             {
                 // TODO: Add insert logic here
                 Advertise advertise = new Advertise();
-                advertise.SetAddinationalInfo(collection["addinationInfo"] as string);
-                advertise.SetAdvertCategory(DBHelper.FindOne<AdvertCategory>(id: Int32.Parse(collection["category"])));
-                advertise.SetContent(collection["content"]);
-                advertise.SetHash(DBHelper.generateHash());
-                advertise.SetPrice(Double.Parse(collection["price"]));
-                advertise.SetTitle(collection["title"] as string);
-                DateTime validity = new DateTime();
+                advertise.SetAddinationalInfo(collection["VadditionalInfo"] as string);
+                advertise.SetAdvertCategory(DBHelper.FindOne<AdvertCategory>(Int32.Parse(collection["category"])));
+                advertise.VidTerritory = Int32.Parse(collection["territory"]);
+                advertise.SetContent(collection["Vcontent"]);
+                advertise.SetPrice(Double.Parse(collection["Vprice"]));
+                advertise.SetTitle(collection["Vtitle"] as string);
+                DateTime validity = DateTime.Now;
                 validity.AddDays(20);
                 advertise.SetValidity(validity);
                 advertise.SetVisibleToOthers(true);
                 advertise.SetVisits(0);
                 advertise.VidUser = ((User)Session["User"]).GetId();
                 DBHelper.SaveOrUpdate(advertise);
-                
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Edit", new {id=advertise.GetId() });
             }
             catch
             {
+                ViewBag.Message = "Wystąpił błąd podczas dodawania - powiadom Administrację";
                 return View();
             }
         }
